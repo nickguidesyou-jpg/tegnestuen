@@ -166,7 +166,7 @@ section{position:relative}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,31,.5)}55%{box-shadow:0 0 0 7px rgba(255,90,31,0)}}
 .hero h1{font-size:clamp(2.7rem,6.4vw,4.6rem);margin-bottom:24px}
 .hero h1 .u{position:relative;white-space:nowrap}
-.hero h1 .u svg{position:absolute;left:-2%;bottom:-.14em;width:104%;height:.34em;overflow:visible}
+.hero h1 .u svg{position:absolute;left:-2%;bottom:-.04em;width:104%;height:.26em;overflow:visible}
 .hero h1 .u path{stroke:var(--acc);stroke-width:7;fill:none;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 1.1s .7s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 .hero-sub{font-size:1.22rem;color:var(--tx-dim);max-width:520px;margin-bottom:20px}
@@ -422,10 +422,62 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 .chat-in button{background:var(--acc);border:none;border-radius:10px;width:46px;display:grid;place-items:center;cursor:pointer}
 .chat-in button svg{width:18px;height:18px}
 @media (max-width:560px){.chat-fab span{display:none}.chat-fab{padding:14px}}
+
+/* ============ VILD-LAG: korn, marquee, watermark, blyant-cursor, stempel ============ */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:80;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+  animation:grain 900ms steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}100%{transform:translate(2%,-1%)}}
+@media (pointer:coarse){.grain{animation:none}}
+
+.mq-wrap{overflow:clip;padding:20px 0}
+.mq{overflow:hidden;white-space:nowrap;transform:rotate(-1.4deg) scale(1.03);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);background:var(--ink-2)}
+.mq.acc{transform:rotate(1.2deg) scale(1.03);background:var(--acc);border-color:var(--acc)}
+.mq-in{display:inline-block;padding:14px 0;font-family:var(--disp);font-weight:700;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:.05em;text-transform:uppercase;animation:mq 32s linear infinite}
+.mq-in i{font-style:normal;color:var(--acc);margin:0 22px}
+.mq-in b{font-weight:700;color:transparent;-webkit-text-stroke:1.3px var(--tx-dim)}
+.mq.acc .mq-in{color:#1a0c04}
+.mq.acc .mq-in i{color:#1a0c04}
+.mq.acc .mq-in b{-webkit-text-stroke:1.3px #1a0c04}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.sec{overflow-x:clip}
+.sec::after{content:attr(data-big);position:absolute;top:26px;right:-1vw;z-index:0;
+  font-family:var(--disp);font-weight:700;font-size:clamp(7rem,20vw,17rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(167,180,205,.14);pointer-events:none;user-select:none}
+.sec.paper::after{-webkit-text-stroke-color:rgba(25,40,80,.11)}
+.sec>.wrap{position:relative;z-index:1}
+
+.hero h1{text-transform:uppercase;font-size:clamp(2.9rem,8.4vw,6.2rem);line-height:.98;letter-spacing:-.025em}
+.tw{font-family:var(--disp);font-weight:600;color:var(--acc);white-space:nowrap}
+.tw::after{content:"";display:inline-block;width:2px;height:1em;background:var(--acc);margin-left:2px;vertical-align:-.15em;animation:caret 1s steps(2) infinite}
+@keyframes caret{50%{opacity:0}}
+.stat b{font-size:clamp(2.4rem,4.6vw,3.6rem)}
+
+#trail{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:65;display:none}
+#hud{position:fixed;left:0;top:0;z-index:66;pointer-events:none;display:none;
+  font-family:var(--disp);font-size:.68rem;letter-spacing:.14em;color:var(--acc);opacity:.6;white-space:nowrap}
+@media (pointer:fine){ #trail,#hud{display:block} }
+@media (prefers-reduced-motion:reduce){ #trail,#hud{display:none!important} }
+
+.brow{transition:transform .3s ease;will-change:transform}
+
+.stamp{position:absolute;top:14px;right:14px;font-family:var(--disp);font-weight:700;font-size:.9rem;
+  letter-spacing:.12em;color:var(--acc);border:3px solid var(--acc);border-radius:8px;padding:5px 12px;
+  transform:rotate(-12deg) scale(2.6);opacity:0}
+.step.in .stamp{animation:stamp .45s .55s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes stamp{from{transform:rotate(-24deg) scale(2.6);opacity:0}to{transform:rotate(-12deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{transform:rotate(-12deg) scale(1);opacity:1}}
+
+#calcSum.pump{animation:pump .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pump{0%{transform:scale(.94)}55%{transform:scale(1.06)}100%{transform:scale(1)}}
 </style>
 </head>
 <body class="gridbg">
 <a class="skip" href="#main">Spring til indhold</a>
+<div class="grain" aria-hidden="true"></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div id="hud" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-in">
@@ -451,8 +503,8 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
   <div class="wrap hero-in">
     <div>
       <p class="eyebrow rv"><i aria-hidden="true"></i> Tegnestuen · Digitalt håndværk</p>
-      <h1 class="rv rv-d1">Fra <span class="u">streg<svg viewBox="0 0 200 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 16 C40 8 80 20 120 12 S180 10 196 14"/></svg></span> til system.</h1>
-      <p class="hero-sub rv rv-d2">Vi tegner og bygger hjemmesider og interne systemer, der bare virker — skræddersyet til din hverdag og live på dage, ikke måneder.</p>
+      <h1 class="rv rv-d1">Fra <span class="u">streg<svg viewBox="0 0 200 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 16 C40 8 80 20 120 12 S180 10 196 14"/></svg></span><br>til system.</h1>
+      <p class="hero-sub rv rv-d2">Vi tegner og bygger <span class="tw"><span id="typeword">hjemmesider</span></span>, der bare virker — skræddersyet til din hverdag og live på dage, ikke måneder.</p>
       <ul class="hero-usps rv rv-d2">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fast pris — ingen overraskelser</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Du ejer koden og indholdet</li>
@@ -499,6 +551,10 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
   </div>
 </section>
 
+<div class="mq-wrap" aria-hidden="true"><div class="mq"><div class="mq-in">
+  Hjemmesider <i>✏</i> <b>Lagersystemer</b> <i>✏</i> Booking <i>✏</i> <b>Webshops</b> <i>✏</i> AI-værktøjer <i>✏</i> <b>Fast pris</b> <i>✏</i> Hjemmesider <i>✏</i> <b>Lagersystemer</b> <i>✏</i> Booking <i>✏</i> <b>Webshops</b> <i>✏</i> AI-værktøjer <i>✏</i> <b>Fast pris</b> <i>✏</i>&nbsp;
+</div></div></div>
+
 <!-- ============ STATS ============ -->
 <section class="stats" aria-label="Nøgletal">
   <div class="stats-in wrap" style="padding:0">
@@ -510,7 +566,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 </section>
 
 <!-- ============ SERVICES ============ -->
-<section class="sec paper gridline" id="services">
+<section class="sec paper gridline" id="services" data-big="01">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">01 · Løsninger</span>
@@ -555,7 +611,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 </section>
 
 <!-- ============ CASES ============ -->
-<section class="sec gridbg" id="cases">
+<section class="sec gridbg" id="cases" data-big="02">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">02 · Cases</span>
@@ -666,8 +722,12 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
   </div>
 </section>
 
+<div class="mq-wrap" aria-hidden="true"><div class="mq acc"><div class="mq-in">
+  Live på dage <i>◆</i> <b>Du ejer det hele</b> <i>◆</i> 0 kr./md. hosting <i>◆</i> <b>Gratis skitsemøde</b> <i>◆</i> Live på dage <i>◆</i> <b>Du ejer det hele</b> <i>◆</i> 0 kr./md. hosting <i>◆</i> <b>Gratis skitsemøde</b> <i>◆</i>&nbsp;
+</div></div></div>
+
 <!-- ============ PROCESS ============ -->
-<section class="sec paper gridline" id="proces">
+<section class="sec paper gridline" id="proces" data-big="03">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">03 · Proces</span>
@@ -678,13 +738,13 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
       <article class="step rv"><span class="step-day">Dag <em>0</em></span><h3>Skitsen</h3><p>Et gratis og uforpligtende møde — fysisk eller telefon. Vi lytter, stiller spørgsmål og tegner løsningen sammen med dig. Du får en fast pris med hjem.</p></article>
       <article class="step rv rv-d1"><span class="step-day">Dag <em>1–2</em></span><h3>Første udkast</h3><p>Du får et klikbart udkast på en rigtig webadresse — ikke en PDF. Klik rundt på mobilen og mærk efter, om det føles rigtigt.</p></article>
       <article class="step rv rv-d2"><span class="step-day">Dag <em>3–5</em></span><h3>Byg &amp; finpuds</h3><p>Vi retter til, sætter dit indhold ind og tester på alle skærme. Du er med hele vejen — intet går live, før du har godkendt det.</p></article>
-      <article class="step rv rv-d3"><span class="step-day"><em>Live</em></span><h3>Lancering</h3><p>Siden går i luften, og vi viser dig, hvordan alt virker. De første 30 dage justerer vi gratis, hvis noget skal sidde anderledes.</p></article>
+      <article class="step rv rv-d3"><span class="step-day"><em>Live</em></span><span class="stamp" aria-hidden="true">GODKENDT</span><h3>Lancering</h3><p>Siden går i luften, og vi viser dig, hvordan alt virker. De første 30 dage justerer vi gratis, hvis noget skal sidde anderledes.</p></article>
     </div>
   </div>
 </section>
 
 <!-- ============ CALCULATOR ============ -->
-<section class="sec gridbg" id="pris">
+<section class="sec gridbg" id="pris" data-big="04">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">04 · Priser</span>
@@ -724,7 +784,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 </section>
 
 <!-- ============ TESTIMONIALS ============ -->
-<section class="sec paper gridline" id="udtalelser">
+<section class="sec paper gridline" id="udtalelser" data-big="05">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">05 · Udtalelser</span>
@@ -740,7 +800,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="sec gridbg" id="faq">
+<section class="sec gridbg" id="faq" data-big="06">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">06 · FAQ</span>
@@ -870,6 +930,59 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
     });
     b.addEventListener('mouseleave', () => b.style.transform = '');
   });
+
+  /* blyant-trail + CAD-koordinater: din mus er blyanten */
+  const cv = $('#trail'), hud = $('#hud'), ctx = cv.getContext('2d');
+  let pts = [], raf = 0;
+  const fit = () => { cv.width = innerWidth; cv.height = innerHeight; };
+  fit(); addEventListener('resize', fit, {passive:true});
+  addEventListener('pointermove', e => {
+    pts.push({x:e.clientX, y:e.clientY, t:performance.now()});
+    hud.style.transform = `translate(${e.clientX+20}px,${e.clientY+26}px)`;
+    hud.textContent = 'x ' + String(e.clientX).padStart(4,'0') + ' · y ' + String(e.clientY).padStart(4,'0');
+    if (!raf) raf = requestAnimationFrame(drawTrail);
+  }, {passive:true});
+  function drawTrail(){
+    const now = performance.now();
+    pts = pts.filter(p => now - p.t < 600);
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (let i = 1; i < pts.length; i++){
+      const age = (now - pts[i].t) / 600;
+      ctx.strokeStyle = `rgba(255,90,31,${(1-age)*.5})`;
+      ctx.lineWidth = 2.4 * (1-age) + .4;
+      ctx.beginPath(); ctx.moveTo(pts[i-1].x, pts[i-1].y); ctx.lineTo(pts[i].x, pts[i].y); ctx.stroke();
+    }
+    raf = pts.length > 1 ? requestAnimationFrame(drawTrail) : 0;
+    if (!raf) ctx.clearRect(0, 0, cv.width, cv.height);
+  }
+
+  /* 3D-tilt på browser-mockups */
+  $$('.brow').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const rx = ((e.clientY - r.top) / r.height - .5) * -5;
+      const ry = ((e.clientX - r.left) / r.width - .5) * 5;
+      el.style.transform = `perspective(950px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    el.addEventListener('mouseleave', () => el.style.transform = '');
+  });
+}
+
+/* ---------- typewriter i hero ---------- */
+const WORDS = ['hjemmesider','lagersystemer','bookingsystemer','webshops','AI-værktøjer'];
+if (!REDUCED){
+  const tw = $('#typeword');
+  let wi = 0, ci = WORDS[0].length, del = true;
+  setTimeout(function step(){
+    const w = WORDS[wi];
+    ci += del ? -1 : 1;
+    tw.textContent = w.slice(0, ci);
+    let wait = del ? 45 : 85;
+    if (!del && ci === w.length){ del = true; wait = 2400; }
+    else if (del && ci === 0){ del = false; wi = (wi+1) % WORDS.length; wait = 350; }
+    setTimeout(step, wait);
+  }, 2600);
 }
 
 /* ---------- live case previews (klik-til-load) ---------- */
@@ -899,7 +1012,9 @@ function calc(){
   const base = PRICING[type];
   const extra = adds.reduce((s,a) => s + +a.value, 0);
   const total = base + extra;
-  $('#calcSum').textContent = 'ca. ' + kr(total) + ' – ' + kr(Math.round(total*1.3/500)*500);
+  const sumEl = $('#calcSum');
+  sumEl.textContent = 'ca. ' + kr(total) + ' – ' + kr(Math.round(total*1.3/500)*500);
+  if (!REDUCED){ sumEl.classList.remove('pump'); void sumEl.offsetWidth; sumEl.classList.add('pump'); }
   $('#calcList').innerHTML =
     `<li><b>${TYPE_NAMES[type]}</b><span>${kr(base)}</span></li>` +
     adds.map(a => `<li><b>${a.dataset.name}</b><span>+ ${kr(+a.value)}</span></li>`).join('');
