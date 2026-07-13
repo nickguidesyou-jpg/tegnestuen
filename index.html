@@ -161,7 +161,8 @@ section{position:relative}
   text-transform:uppercase;color:var(--tx-dim);margin-bottom:26px;
   border:1px solid var(--line);padding:8px 16px;border-radius:99px;
 }
-.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:pulse 2.4s infinite}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:pulse 2.4s infinite;flex:none}
+@media (max-width:480px){.eyebrow{font-size:.72rem;letter-spacing:.12em;white-space:nowrap}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,31,.5)}55%{box-shadow:0 0 0 7px rgba(255,90,31,0)}}
 .hero h1{font-size:clamp(2.7rem,6.4vw,4.6rem);margin-bottom:24px}
 .hero h1 .u{position:relative;white-space:nowrap}
@@ -627,11 +628,11 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
         <div class="brow-view">
           <div class="demo" id="demo">
             <div class="demo-top"><b>◆</b> Lager <div class="demo-tabs" role="tablist" aria-label="Demo-faner">
-              <button class="demo-tab on" role="tab" aria-selected="true" data-tab="d1">Oversigt</button>
-              <button class="demo-tab" role="tab" aria-selected="false" data-tab="d2">Varer</button>
-              <button class="demo-tab" role="tab" aria-selected="false" data-tab="d3">Ordrer</button>
+              <button class="demo-tab on" role="tab" id="tab-d1" aria-controls="d1" aria-selected="true" data-tab="d1">Oversigt</button>
+              <button class="demo-tab" role="tab" id="tab-d2" aria-controls="d2" aria-selected="false" data-tab="d2">Varer</button>
+              <button class="demo-tab" role="tab" id="tab-d3" aria-controls="d3" aria-selected="false" data-tab="d3">Ordrer</button>
             </div></div>
-            <div class="demo-body" id="d1" role="tabpanel">
+            <div class="demo-body" id="d1" role="tabpanel" aria-labelledby="tab-d1">
               <div class="demo-cards">
                 <div class="demo-card"><b>1.284</b><span>enheder på lager</span></div>
                 <div class="demo-card"><b>7</b><span>varer under min.</span></div>
@@ -643,7 +644,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
                 <tr><td>Bordben model C</td><td>3 tilbage</td><td><span class="badge b-lo">bestil nu</span></td></tr>
               </tbody></table>
             </div>
-            <div class="demo-body" id="d2" role="tabpanel" hidden>
+            <div class="demo-body" id="d2" role="tabpanel" aria-labelledby="tab-d2" hidden>
               <table><thead><tr><th>Vare</th><th>Antal</th><th>Placering</th><th>Status</th></tr></thead><tbody>
                 <tr><td>Bordben model A · 71 cm</td><td>86</td><td>Rum A · Hylde 2</td><td><span class="badge b-ok">ok</span></td></tr>
                 <tr><td>Understel sort · 120 cm</td><td>44</td><td>Rum B · Hylde 1</td><td><span class="badge b-ok">ok</span></td></tr>
@@ -651,7 +652,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
                 <tr><td>Stel hvid · 140 cm</td><td>12</td><td>Rum C · Gulv</td><td><span class="badge b-md">bestil snart</span></td></tr>
               </tbody></table>
             </div>
-            <div class="demo-body" id="d3" role="tabpanel" hidden>
+            <div class="demo-body" id="d3" role="tabpanel" aria-labelledby="tab-d3" hidden>
               <table><thead><tr><th>Ordre</th><th>Kunde</th><th>Status</th></tr></thead><tbody>
                 <tr><td>#1044</td><td>K. Hansen</td><td><span class="badge b-md">plukkes</span></td></tr>
                 <tr><td>#1043</td><td>Webshop</td><td><span class="badge b-ok">pakket</span></td></tr>
@@ -946,7 +947,7 @@ $('#cform').addEventListener('submit', async e => {
     m.textContent = 'Tak! Din besked er sendt — du hører fra os inden for 24 timer. ✏️';
     f.reset();
   } catch {
-    const mail = 'mailto:nickguidesyou@gmail.com?subject=' + encodeURIComponent('Bud fra tegnestuen.dk — ' + name)
+    const mail = 'mailto:nickguidesyou@gmail.com?subject=' + encodeURIComponent('Bud fra Tegnestuen — ' + name)
       + '&body=' + encodeURIComponent(msg + '\n\nKontakt: ' + contact);
     m.className = 'cf-msg err';
     m.innerHTML = 'Formularen driller lige nu — <a href="' + mail + '">send i stedet en mail med ét klik</a>, så svarer vi lige så hurtigt.';
