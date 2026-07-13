@@ -970,19 +970,24 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
 }
 
 /* ---------- typewriter i hero ---------- */
+/* Starter først ved brugerens første interaktion (undgår layout-shift i load-målingen) */
 const WORDS = ['hjemmesider','lagersystemer','bookingsystemer','webshops','AI-værktøjer'];
 if (!REDUCED){
-  const tw = $('#typeword');
-  let wi = 0, ci = WORDS[0].length, del = true;
-  setTimeout(function step(){
-    const w = WORDS[wi];
-    ci += del ? -1 : 1;
-    tw.textContent = w.slice(0, ci);
-    let wait = del ? 45 : 85;
-    if (!del && ci === w.length){ del = true; wait = 2400; }
-    else if (del && ci === 0){ del = false; wi = (wi+1) % WORDS.length; wait = 350; }
-    setTimeout(step, wait);
-  }, 2600);
+  const startTyper = () => {
+    ['pointermove','scroll','touchstart','keydown'].forEach(ev => removeEventListener(ev, startTyper));
+    const tw = $('#typeword');
+    let wi = 0, ci = WORDS[0].length, del = true;
+    setTimeout(function step(){
+      const w = WORDS[wi];
+      ci += del ? -1 : 1;
+      tw.textContent = w.slice(0, ci);
+      let wait = del ? 45 : 85;
+      if (!del && ci === w.length){ del = true; wait = 2400; }
+      else if (del && ci === 0){ del = false; wi = (wi+1) % WORDS.length; wait = 350; }
+      setTimeout(step, wait);
+    }, 1200);
+  };
+  ['pointermove','scroll','touchstart','keydown'].forEach(ev => addEventListener(ev, startTyper, {passive:true, once:false}));
 }
 
 /* ---------- live case previews (klik-til-load) ---------- */
