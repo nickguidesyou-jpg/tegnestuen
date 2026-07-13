@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tegnestuen — Hjemmesider og interne systemer, der bare virker</title>
+<meta name="description" content="Tegnestuen tegner og bygger skræddersyede hjemmesider og interne systemer (lager, booking, ordrestyring) til alle brancher. Fast pris, live på dage — og du ejer det hele.">
+<link rel="canonical" href="https://nickguidesyou-jpg.github.io/tegnestuen/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tegnestuen — Fra streg til system">
+<meta property="og:description" content="Skræddersyede hjemmesider og interne systemer. Fast pris, live på dage, 0 kr. i månedlig hosting.">
+<meta property="og:url" content="https://nickguidesyou-jpg.github.io/tegnestuen/">
+<meta property="og:locale" content="da_DK">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cpath d='M14 22h36M14 22l10 24 8-16 8 16 10-24' stroke='%23ff5a1f' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tegnestuen",
+  "description": "Skræddersyede hjemmesider og interne systemer (lagerstyring, booking, ordrestyring) til små og mellemstore virksomheder.",
+  "url": "https://nickguidesyou-jpg.github.io/tegnestuen/",
+  "email": "nickguidesyou@gmail.com",
+  "areaServed": "DK",
+  "priceRange": "kr 4995 - kr 25000",
+  "knowsAbout": ["Hjemmesider", "Webdesign", "Lagerstyring", "Online booking", "Interne systemer"]
+}
+</script>
+<style>
+/* ============ FONT ============ */
+@font-face{
+  font-family:'Space Grotesk';
+  font-style:normal;
+  font-weight:300 700;
+  font-display:swap;
+  src:url('assets/space-grotesk-latin.woff2') format('woff2');
+}
+/* ============ TOKENS ============ */
+:root{
+  --ink:#0b0e14;
+  --ink-2:#10141d;
+  --ink-3:#161b26;
+  --paper:#f4f1ea;
+  --paper-2:#eae6dc;
+  --tx:#eceae4;
+  --tx-dim:#a7afbd;
+  --tx-ink:#191c22;
+  --tx-ink-dim:#585f6d;
+  --acc:#ff5a1f;
+  --acc-deep:#e64a12;
+  --line:rgba(167,180,205,.14);
+  --line-ink:rgba(25,40,80,.13);
+  --grid:rgba(140,165,210,.055);
+  --grid-ink:rgba(40,70,140,.075);
+  --disp:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --body:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  --max:1160px;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  font-family:var(--body);
+  background:var(--ink);
+  color:var(--tx);
+  line-height:1.6;
+  font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--acc);color:#fff}
+h1,h2,h3,.disp{font-family:var(--disp);letter-spacing:-.02em;line-height:1.08;font-weight:700}
+a{color:inherit}
+img,svg{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--acc);color:#fff;padding:10px 18px;z-index:99;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+
+/* mm-paper grids */
+.gridbg{position:relative}
+.gridbg::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(#000 60%,transparent);
+  -webkit-mask-image:linear-gradient(#000 60%,transparent);
+}
+section{position:relative}
+.paper{background:var(--paper);color:var(--tx-ink)}
+.paper .gridline::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-ink) 1px,transparent 1px),linear-gradient(90deg,var(--grid-ink) 1px,transparent 1px);
+  background-size:36px 36px;
+}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .3s,border-color .3s,backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+.nav.on{background:rgba(11,14,20,.82);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:1.22rem;text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px;flex:none}
+.nav-links{display:flex;gap:24px;margin-left:auto;list-style:none}
+.nav-links a{text-decoration:none;font-size:.94rem;color:var(--tx-dim);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--tx)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--acc);transition:right .25s}
+.nav-links a:hover::after{right:0}
+.nav .cta-s{margin-left:8px}
+@media (max-width:820px){.nav-links{display:none}.nav .cta-s{margin-left:auto}}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  font-family:var(--disp);font-weight:600;font-size:1.02rem;
+  padding:15px 30px;border-radius:12px;text-decoration:none;cursor:pointer;
+  border:none;transition:transform .18s,box-shadow .18s,background .18s;
+  will-change:transform;
+}
+.btn-p{background:var(--acc);color:#1a0c04;box-shadow:0 6px 24px -8px rgba(255,90,31,.55)}
+.btn-p:hover{background:#ff6c37;transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,90,31,.6)}
+.btn-g{background:transparent;color:var(--tx);border:1.5px solid var(--line);box-shadow:none}
+.btn-g:hover{border-color:var(--tx-dim);transform:translateY(-2px)}
+.paper .btn-g{color:var(--tx-ink);border-color:rgba(25,40,80,.25)}
+.paper .btn-g:hover{border-color:var(--tx-ink)}
+.cta-s{padding:10px 20px;font-size:.92rem;border-radius:10px}
+
+/* ============ SECTION HEADERS ============ */
+.sec{padding:110px 0}
+.sec-head{max-width:720px;margin-bottom:56px}
+.sec-no{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--disp);font-size:.85rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--acc);margin-bottom:18px;
+}
+.sec-no::before{content:"";width:34px;height:2px;background:var(--acc)}
+.sec-head h2{font-size:clamp(1.9rem,4.2vw,2.9rem);margin-bottom:16px}
+.sec-sub{color:var(--tx-dim);font-size:1.12rem;max-width:600px}
+.paper .sec-sub{color:var(--tx-ink-dim)}
+
+/* ============ REVEALS ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media (max-width:920px){.hero-in{grid-template-columns:1fr}.hero-art{max-width:520px}}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-size:.85rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tx-dim);margin-bottom:26px;
+  border:1px solid var(--line);padding:8px 16px;border-radius:99px;
+}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,31,.5)}55%{box-shadow:0 0 0 7px rgba(255,90,31,0)}}
+.hero h1{font-size:clamp(2.7rem,6.4vw,4.6rem);margin-bottom:24px}
+.hero h1 .u{position:relative;white-space:nowrap}
+.hero h1 .u svg{position:absolute;left:-2%;bottom:-.14em;width:104%;height:.34em;overflow:visible}
+.hero h1 .u path{stroke:var(--acc);stroke-width:7;fill:none;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 1.1s .7s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-sub{font-size:1.22rem;color:var(--tx-dim);max-width:520px;margin-bottom:20px}
+.hero-usps{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin:0 0 36px;padding:0;color:var(--tx-dim);font-size:.98rem}
+.hero-usps li{display:flex;align-items:center;gap:8px}
+.hero-usps svg{width:16px;height:16px;flex:none}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+
+/* hero blueprint art */
+.hero-art{position:relative}
+.bp{width:100%;height:auto}
+.bp .st{stroke:rgba(150,175,220,.5);stroke-width:1.6;fill:none;stroke-dasharray:1200;stroke-dashoffset:1200}
+.bp .st.acc{stroke:var(--acc);stroke-width:2.2}
+.bp .fill{opacity:0;transition:opacity .8s}
+.bp.go .st{animation:draw 1.6s cubic-bezier(.5,0,.3,1) forwards}
+.bp.go .st.d1{animation-delay:.25s}.bp.go .st.d2{animation-delay:.5s}.bp.go .st.d3{animation-delay:.75s}.bp.go .st.d4{animation-delay:1s}
+.bp.go .fill{opacity:1;transition-delay:1.6s}
+.bp text{font-family:var(--disp);fill:rgba(150,175,220,.55);font-size:9px;letter-spacing:.08em}
+@media (prefers-reduced-motion:reduce){.bp .st{stroke-dashoffset:0}.bp .fill{opacity:1}}
+
+/* ============ STATS ============ */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+.stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media (max-width:820px){.stats-in{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:44px 26px;text-align:center;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:0;top:24%;bottom:24%;width:1px;background:var(--line)}
+@media (max-width:820px){.stat:nth-child(3)::before{display:none}}
+.stat b{display:block;font-family:var(--disp);font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;color:var(--acc);letter-spacing:-.02em}
+.stat span{font-size:.92rem;color:var(--tx-dim)}
+
+/* ============ SERVICES ============ */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media (max-width:860px){.svc-grid{grid-template-columns:1fr}}
+.svc{
+  position:relative;background:#fff;border:1px solid var(--line-ink);border-radius:var(--r);
+  padding:42px 38px;display:flex;flex-direction:column;gap:0;
+  transition:transform .25s,box-shadow .25s;
+}
+.svc:hover{transform:translateY(-5px);box-shadow:0 24px 50px -22px rgba(20,30,60,.28)}
+.svc::before,.svc::after{
+  content:"";position:absolute;width:16px;height:16px;pointer-events:none;
+  border:2px solid var(--acc);opacity:.85;
+}
+.svc::before{top:-2px;left:-2px;border-right:none;border-bottom:none;border-radius:var(--r) 0 0 0}
+.svc::after{bottom:-2px;right:-2px;border-left:none;border-top:none;border-radius:0 0 var(--r) 0}
+.svc-ico{width:52px;height:52px;border-radius:13px;background:var(--ink);display:grid;place-items:center;margin-bottom:22px}
+.svc-ico svg{width:26px;height:26px}
+.svc h3{font-size:1.5rem;margin-bottom:6px}
+.svc .price{font-family:var(--disp);color:var(--acc-deep);font-weight:600;margin-bottom:18px}
+.svc p{color:var(--tx-ink-dim);margin-bottom:20px}
+.svc ul{list-style:none;display:grid;gap:11px;margin-bottom:30px}
+.svc li{display:flex;gap:11px;align-items:flex-start;font-size:.98rem}
+.svc li svg{width:17px;height:17px;flex:none;margin-top:4px}
+.svc-ctas{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ============ CASES ============ */
+.case{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:center;
+  padding:64px 0;border-top:1px solid var(--line);
+}
+.case:first-of-type{border-top:none;padding-top:12px}
+.case:nth-child(even){grid-template-columns:1.15fr 1fr}
+.case:nth-child(even) .case-txt{order:2}
+@media (max-width:920px){
+  .case,.case:nth-child(even){grid-template-columns:1fr}
+  .case:nth-child(even) .case-txt{order:0}
+}
+.case-tag{font-family:var(--disp);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:14px;display:block}
+.case h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:14px}
+.case p{color:var(--tx-dim);margin-bottom:22px;max-width:480px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.chip{font-size:.86rem;font-family:var(--disp);font-weight:500;border:1px solid var(--line);border-radius:99px;padding:7px 15px;color:var(--tx)}
+.chip b{color:var(--acc);font-weight:700}
+.case-link{display:inline-flex;align-items:center;gap:8px;color:var(--tx);font-weight:600;text-decoration:none;font-family:var(--disp)}
+.case-link svg{width:16px;height:16px;transition:transform .2s}
+.case-link:hover svg{transform:translate(3px,-3px)}
+.case-link span{border-bottom:2px solid var(--acc)}
+
+/* browser mockup */
+.brow{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink-3);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.7);
+}
+.brow-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--ink-2);border-bottom:1px solid var(--line)}
+.brow-bar i{width:11px;height:11px;border-radius:50%;background:#3a4152}
+.brow-bar i:nth-child(1){background:#ff5f57}.brow-bar i:nth-child(2){background:#febc2e}.brow-bar i:nth-child(3){background:#28c840}
+.brow-url{flex:1;margin-left:8px;background:var(--ink);border-radius:8px;padding:5px 14px;font-size:.78rem;color:var(--tx-dim);font-family:var(--disp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brow-view{position:relative;aspect-ratio:16/10.5;background:var(--ink)}
+.brow-view iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.poster{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  width:100%;border:0;cursor:pointer;color:var(--tx);
+  background:radial-gradient(120% 120% at 50% 0%,rgba(255,90,31,.14),transparent 60%),var(--ink-2);
+}
+.poster .play{
+  width:64px;height:64px;border-radius:50%;background:var(--acc);display:grid;place-items:center;
+  box-shadow:0 10px 34px -8px rgba(255,90,31,.7);transition:transform .2s;
+}
+.poster:hover .play{transform:scale(1.1)}
+.poster .play svg{width:24px;height:24px;margin-left:3px}
+.poster b{font-family:var(--disp);font-size:1.05rem}
+.poster small{color:var(--tx-dim)}
+.poster .mini{position:absolute;inset:0;z-index:-1;opacity:.35;display:grid;place-items:center;padding:28px}
+
+/* SESU demo mock */
+.demo{position:absolute;inset:0;background:#0d1017;font-size:11.5px;display:flex;flex-direction:column;overflow:hidden}
+.demo-top{display:flex;gap:14px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);font-family:var(--disp)}
+.demo-top b{color:var(--acc)}
+.demo-tabs{display:flex;gap:4px;margin-left:auto}
+.demo-tab{background:none;border:1px solid transparent;color:var(--tx-dim);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:11px;font-family:var(--disp)}
+.demo-tab.on{background:var(--ink-3);color:var(--tx);border-color:var(--line)}
+.demo-body{flex:1;padding:14px 16px;overflow:hidden}
+.demo-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.demo-card{background:var(--ink-3);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.demo-card b{display:block;font-size:16px;font-family:var(--disp);color:var(--tx)}
+.demo-card span{color:var(--tx-dim);font-size:10.5px}
+.demo table{width:100%;border-collapse:collapse}
+.demo th{text-align:left;color:var(--tx-dim);font-weight:500;padding:6px 8px;border-bottom:1px solid var(--line);font-size:10.5px}
+.demo td{padding:7px 8px;border-bottom:1px solid rgba(167,180,205,.07)}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:600}
+.b-ok{background:rgba(40,200,64,.14);color:#5ae07a}
+.b-lo{background:rgba(255,90,31,.16);color:#ff8a5c}
+.b-md{background:rgba(254,188,46,.14);color:#ffd166}
+
+/* ============ PROCESS ============ */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:step}
+@media (max-width:920px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.steps::before{
+  content:"";position:absolute;top:26px;left:6%;right:6%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--line-ink) 0 10px,transparent 10px 18px);
+}
+@media (max-width:920px){.steps::before{display:none}}
+.step{position:relative;background:#fff;border:1px solid var(--line-ink);border-radius:var(--r);padding:56px 26px 30px;transition:transform .25s,box-shadow .25s}
+.step:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(20,30,60,.25)}
+.step-day{
+  position:absolute;top:-14px;left:22px;background:var(--ink);color:var(--tx);
+  font-family:var(--disp);font-size:.78rem;font-weight:600;letter-spacing:.06em;
+  padding:6px 14px;border-radius:99px;
+}
+.step-day em{color:var(--acc);font-style:normal}
+.step h3{font-size:1.18rem;margin-bottom:10px}
+.step h3::before{counter-increment:step;content:counter(step,decimal-leading-zero);display:block;font-size:.8rem;color:var(--acc);letter-spacing:.2em;margin-bottom:8px;font-weight:500}
+.step p{color:var(--tx-ink-dim);font-size:.95rem}
+
+/* ============ CALCULATOR ============ */
+.calc{display:grid;grid-template-columns:1.25fr .85fr;gap:30px;align-items:start}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.calc-panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:34px}
+.calc h3{font-size:1.05rem;font-family:var(--disp);letter-spacing:.14em;text-transform:uppercase;color:var(--tx-dim);font-weight:500;margin-bottom:18px}
+.calc fieldset{border:none;margin-bottom:30px}
+.calc legend{font-family:var(--disp);font-weight:600;font-size:1.15rem;margin-bottom:16px;color:var(--tx)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt label{
+  display:flex;flex-direction:column;gap:3px;border:1.5px solid var(--line);border-radius:12px;
+  padding:15px 17px;cursor:pointer;transition:border-color .2s,background .2s;height:100%;
+}
+.opt input:checked+label{border-color:var(--acc);background:rgba(255,90,31,.07)}
+.opt input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
+.opt b{font-family:var(--disp);font-size:1rem}
+.opt span{font-size:.86rem;color:var(--tx-dim)}
+.opt .pr{margin-top:5px;font-family:var(--disp);font-size:.88rem;color:var(--acc);font-weight:600}
+.calc-out{position:sticky;top:96px;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:34px;text-align:center}
+.calc-out .lbl{font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-dim)}
+.calc-out .sum{font-family:var(--disp);font-size:clamp(2rem,4vw,2.7rem);font-weight:700;color:var(--acc);margin:10px 0 4px;letter-spacing:-.02em}
+.calc-out .note{font-size:.88rem;color:var(--tx-dim);margin-bottom:24px}
+.calc-out ul{list-style:none;text-align:left;margin:0 0 26px;display:grid;gap:8px;font-size:.92rem;color:var(--tx-dim)}
+.calc-out li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.calc-out li b{color:var(--tx);font-weight:500}
+
+/* ============ TESTIMONIALS ============ */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:880px){.quotes{grid-template-columns:1fr}}
+.quote{background:#fff;border:1px solid var(--line-ink);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:18px}
+.quote svg{width:30px;height:30px}
+.quote p{font-size:1.02rem;color:var(--tx-ink);flex:1}
+.quote footer{font-size:.9rem;color:var(--tx-ink-dim)}
+.quote footer b{display:block;color:var(--tx-ink);font-family:var(--disp)}
+
+/* ============ FAQ ============ */
+.faq{max-width:780px}
+.faq details{border-bottom:1px solid var(--line);padding:6px 0}
+.faq summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:var(--disp);font-weight:600;font-size:1.12rem;padding:20px 0;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;color:var(--acc);transition:transform .25s;flex:none;font-weight:400}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--tx-dim);padding:0 0 22px;max-width:640px}
+
+/* ============ CONTACT ============ */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+@media (max-width:880px){.contact{grid-template-columns:1fr}}
+.contact-info p{color:var(--tx-dim);margin-bottom:26px;max-width:420px}
+.contact-info .pt{display:flex;gap:14px;align-items:center;margin-bottom:16px;color:var(--tx-dim);font-size:.98rem}
+.contact-info .pt svg{width:20px;height:20px;flex:none}
+.contact-info .pt a{color:var(--tx)}
+form.cf{display:grid;gap:16px;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:34px}
+.cf label{font-family:var(--disp);font-weight:500;font-size:.94rem;display:grid;gap:8px}
+.cf input,.cf textarea{
+  font:inherit;font-size:16px;background:var(--ink);border:1.5px solid var(--line);border-radius:10px;
+  padding:13px 16px;color:var(--tx);width:100%;transition:border-color .2s;
+}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--acc)}
+.cf textarea{min-height:120px;resize:vertical}
+.cf .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.cf-msg{font-size:.95rem;border-radius:10px;padding:14px 16px;display:none}
+.cf-msg.ok{display:block;background:rgba(40,200,64,.12);color:#7ce89a;border:1px solid rgba(40,200,64,.3)}
+.cf-msg.err{display:block;background:rgba(255,90,31,.1);color:#ffab8a;border:1px solid rgba(255,90,31,.3)}
+.cf-msg a{color:inherit;font-weight:600}
+
+/* ============ FOOTER ============ */
+footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(--ink-2)}
+.foot-in{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.foot-in nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot-in nav a{color:var(--tx-dim);text-decoration:none;font-size:.92rem}
+.foot-in nav a:hover{color:var(--tx)}
+.foot-meta{width:100%;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--tx-dim);font-size:.86rem}
+
+/* ============ CHAT ============ */
+.chat-fab{
+  position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;
+  background:var(--acc);color:#1a0c04;border:none;border-radius:99px;padding:14px 22px;
+  font-family:var(--disp);font-weight:600;font-size:1rem;cursor:pointer;
+  box-shadow:0 14px 40px -10px rgba(255,90,31,.65);transition:transform .2s;
+}
+.chat-fab:hover{transform:translateY(-3px)}
+.chat-fab svg{width:20px;height:20px}
+.chat-box{
+  position:fixed;right:22px;bottom:90px;z-index:60;width:min(380px,calc(100vw - 44px));
+  background:var(--ink-2);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.8);display:none;flex-direction:column;max-height:min(560px,70vh);
+}
+.chat-box.open{display:flex}
+.chat-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--ink-3)}
+.chat-head b{font-family:var(--disp)}
+.chat-head small{display:block;color:var(--tx-dim);font-size:.8rem}
+.chat-head button{margin-left:auto;background:none;border:none;color:var(--tx-dim);font-size:1.3rem;cursor:pointer;padding:4px 8px}
+.chat-log{flex:1;overflow-y:auto;padding:18px;display:grid;gap:12px;align-content:start}
+.msg{max-width:85%;padding:11px 15px;border-radius:14px;font-size:.95rem;line-height:1.5;white-space:pre-wrap}
+.msg.bot{background:var(--ink-3);border:1px solid var(--line);border-bottom-left-radius:4px;justify-self:start}
+.msg.me{background:var(--acc);color:#1a0c04;border-bottom-right-radius:4px;justify-self:end}
+.msg.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--tx-dim);margin-right:4px;animation:blink 1.2s infinite}
+.msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.chat-in{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line)}
+.chat-in input{flex:1;font:inherit;font-size:16px;background:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--tx)}
+.chat-in input:focus{outline:none;border-color:var(--acc)}
+.chat-in button{background:var(--acc);border:none;border-radius:10px;width:46px;display:grid;place-items:center;cursor:pointer}
+.chat-in button svg{width:18px;height:18px}
+@media (max-width:560px){.chat-fab span{display:none}.chat-fab{padding:14px}}
+</style>
+</head>
+<body class="gridbg">
+<a class="skip" href="#main">Spring til indhold</a>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Tegnestuen — forside">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#10141d"/><path d="M14 22h36M14 22l10 24 8-16 8 16 10-24" stroke="#ff5a1f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tegnestuen
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Løsninger</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#proces">Proces</a></li>
+      <li><a href="#pris">Priser</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-p cta-s" href="#kontakt">Få et bud</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow rv"><i aria-hidden="true"></i> Tegnestuen · Digitalt håndværk</p>
+      <h1 class="rv rv-d1">Fra <span class="u">streg<svg viewBox="0 0 200 24" aria-hidden="true" preserveAspectRatio="none"><path d="M4 16 C40 8 80 20 120 12 S180 10 196 14"/></svg></span> til system.</h1>
+      <p class="hero-sub rv rv-d2">Vi tegner og bygger hjemmesider og interne systemer, der bare virker — skræddersyet til din hverdag og live på dage, ikke måneder.</p>
+      <ul class="hero-usps rv rv-d2">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fast pris — ingen overraskelser</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Du ejer koden og indholdet</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>0 kr. i månedlig hosting</li>
+      </ul>
+      <div class="hero-ctas rv rv-d3">
+        <a class="btn btn-p" href="#kontakt">Få et uforpligtende bud</a>
+        <a class="btn btn-g" href="#cases">Se vores arbejde</a>
+      </div>
+    </div>
+    <div class="hero-art rv rv-d2" aria-hidden="true">
+      <svg class="bp" id="bp" viewBox="0 0 460 380" fill="none">
+        <!-- dimension lines -->
+        <path class="st d4" d="M30 20 h400 M30 14 v12 M430 14 v12"/>
+        <text x="205" y="14">460 px</text>
+        <!-- browser frame -->
+        <rect class="st" x="30" y="40" width="400" height="310" rx="14"/>
+        <path class="st" d="M30 78 h400"/>
+        <circle class="st" cx="52" cy="59" r="5"/><circle class="st" cx="72" cy="59" r="5"/><circle class="st" cx="92" cy="59" r="5"/>
+        <rect class="st" x="112" y="50" width="240" height="18" rx="9"/>
+        <!-- hero block -->
+        <rect class="st acc d1" x="58" y="104" width="180" height="20" rx="4"/>
+        <rect class="st d1" x="58" y="136" width="230" height="10" rx="4"/>
+        <rect class="st d1" x="58" y="154" width="190" height="10" rx="4"/>
+        <rect class="st acc d2" x="58" y="182" width="110" height="30" rx="8"/>
+        <rect class="st d2" x="318" y="104" width="86" height="108" rx="8"/>
+        <path class="st d2" d="M318 186 l30 -26 22 16 34 -30"/>
+        <!-- cards row -->
+        <rect class="st d3" x="58" y="244" width="106" height="76" rx="8"/>
+        <rect class="st d3" x="177" y="244" width="106" height="76" rx="8"/>
+        <rect class="st d3" x="296" y="244" width="108" height="76" rx="8"/>
+        <!-- fills fade in -->
+        <g class="fill">
+          <rect x="58" y="182" width="110" height="30" rx="8" fill="#ff5a1f" opacity=".9"/>
+          <rect x="318" y="104" width="86" height="108" rx="8" fill="#1c2333"/>
+          <rect x="58" y="244" width="106" height="76" rx="8" fill="#151b28"/>
+          <rect x="177" y="244" width="106" height="76" rx="8" fill="#151b28"/>
+          <rect x="296" y="244" width="108" height="76" rx="8" fill="#151b28"/>
+        </g>
+        <!-- side dimension -->
+        <path class="st d4" d="M446 40 v310 M440 40 h12 M440 350 h12"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="Nøgletal">
+  <div class="stats-in wrap" style="padding:0">
+    <div class="stat rv"><b><span data-count="3">0</span></b><span>løsninger i drift lige nu</span></div>
+    <div class="stat rv rv-d1"><b><span data-count="95">0</span>+</b><span>Lighthouse-score på alt vi bygger</span></div>
+    <div class="stat rv rv-d2"><b><span data-count="48">0</span> timer</b><span>fra idé til første klikbare udkast</span></div>
+    <div class="stat rv rv-d3"><b><span data-count="0">0</span> kr.</b><span>i månedlig hosting</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec paper gridline" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">01 · Løsninger</span>
+      <h2>To ting. Gjort ordentligt.</h2>
+      <p class="sec-sub">Vi laver ikke alt. Vi laver hjemmesider, der sælger, og interne systemer, der sparer dig timer hver uge — til alle brancher.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <div class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div>
+        <h3>Hjemmesider</h3>
+        <p class="price">Fra 4.995 kr. — engangsbeløb</p>
+        <p>Skræddersyet design tegnet fra bunden — aldrig et tema eller en skabelon. Bygget til at blive fundet på Google og til at få kunder til at handle.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unikt design + tekst der sælger</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lynhurtig og mobilperfekt (95+ i Lighthouse)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Online booking, menukort eller bestilling</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>0 kr./md. i hosting — du ejer det hele</li>
+        </ul>
+        <div class="svc-ctas">
+          <a class="btn btn-p" href="#pris">Beregn din pris</a>
+          <a class="btn btn-g" href="#cases">Se eksempler</a>
+        </div>
+      </article>
+      <article class="svc rv rv-d1">
+        <div class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div>
+        <h3>Interne systemer</h3>
+        <p class="price">Fra 14.995 kr. — engangsbeløb</p>
+        <p>Lagerstyring, ordreflow, booking eller kundekartotek — bygget præcis om <em>din</em> hverdag i stedet for at tvinge dig ind i et standardprogram med abonnement.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lager, ordrer, kunder og historik ét sted</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Stregkodescanning direkte fra mobilen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automatiske genbestillinger og rapporter</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integration til mail, fragt og prisovervågning</li>
+        </ul>
+        <div class="svc-ctas">
+          <a class="btn btn-p" href="#pris">Beregn din pris</a>
+          <a class="btn btn-g" href="#kontakt">Book en snak</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="sec gridbg" id="cases">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">02 · Cases</span>
+      <h2>Se det live. Ikke på et screenshot.</h2>
+      <p class="sec-sub">Vores arbejde kører i drift lige nu. Klik og prøv siderne direkte herfra — det tør de færreste bureauer.</p>
+    </div>
+
+    <article class="case rv">
+      <div class="case-txt">
+        <span class="case-tag">Restaurant · Hjemmeside</span>
+        <h3>King Pizza: et menukort der føles som en biografplakat</h3>
+        <p>Pizzeriaet konkurrerede mod nabobyens skabelonsider. Vi tegnede en cinematisk side med hele menukortet — over 100 retter, søgbart på ét sekund — plus en pizza-roulette, der lader kongen vælge for dig.</p>
+        <div class="chips">
+          <span class="chip"><b>100+</b> retter, søgbare</span>
+          <span class="chip">Live på <b>2 dage</b></span>
+          <span class="chip"><b>0 kr.</b> i drift/md.</span>
+        </div>
+        <a class="case-link" href="https://nickguidesyou-jpg.github.io/king-pizza/" target="_blank" rel="noopener"><span>Besøg siden</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="brow">
+        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">king-pizza · live</span></div>
+        <div class="brow-view">
+          <button class="poster" data-src="https://nickguidesyou-jpg.github.io/king-pizza/" aria-label="Indlæs live preview af King Pizzas hjemmeside">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#1a0c04"><path d="M8 5v14l11-7z"/></svg></span>
+            <b>Prøv siden live</b>
+            <small>Indlæses først når du klikker</small>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="case rv">
+      <div class="case-txt">
+        <span class="case-tag">Frisør · Hjemmeside + bookingsystem</span>
+        <h3>Stenlille Herrefrisør: booking døgnet rundt — uden abonnement</h3>
+        <p>Frisøren betalte for en platformside uden onlinebooking. Vi byggede en ny side med bookingsystem koblet direkte på hans Google Kalender: kunderne booker 24/7, får bekræftelse på mail og kan endda booke op til 5 personer i træk.</p>
+        <div class="chips">
+          <span class="chip">Booking <b>24/7</b></span>
+          <span class="chip"><b>4,8★</b> på Google vist på siden</span>
+          <span class="chip">Gruppebooking op til <b>5</b></span>
+        </div>
+        <a class="case-link" href="https://nickguidesyou-jpg.github.io/shf-preview/" target="_blank" rel="noopener"><span>Besøg siden</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="brow">
+        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">stenlille-herrefrisør · live</span></div>
+        <div class="brow-view">
+          <button class="poster" data-src="https://nickguidesyou-jpg.github.io/shf-preview/" aria-label="Indlæs live preview af Stenlille Herrefrisørs hjemmeside">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#1a0c04"><path d="M8 5v14l11-7z"/></svg></span>
+            <b>Prøv siden live</b>
+            <small>Indlæses først når du klikker</small>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="case rv">
+      <div class="case-txt">
+        <span class="case-tag">Møbelvirksomhed · Internt system</span>
+        <h3>SESU: et komplet lagersystem — bygget om deres hverdag</h3>
+        <p>Fra regneark til fuldt lagersystem: varer, ordrer, indkøb, forsendelser og stregkodescanning fra mobilen. Systemet overvåger selv priser hos konkurrenterne og skriver AI-udkast til genbestillingsmails. Kører bag login — derfor ser du en demo med anonyme tal.</p>
+        <div class="chips">
+          <span class="chip"><b>35+</b> funktioner</span>
+          <span class="chip">Scanning <b>fra mobilen</b></span>
+          <span class="chip"><b>AI</b>-genbestilling</span>
+        </div>
+        <a class="case-link" href="#kontakt"><span>Få sådan et system</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="brow">
+        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">lagersystem · demo (anonymiseret)</span></div>
+        <div class="brow-view">
+          <div class="demo" id="demo">
+            <div class="demo-top"><b>◆</b> Lager <div class="demo-tabs" role="tablist" aria-label="Demo-faner">
+              <button class="demo-tab on" role="tab" aria-selected="true" data-tab="d1">Oversigt</button>
+              <button class="demo-tab" role="tab" aria-selected="false" data-tab="d2">Varer</button>
+              <button class="demo-tab" role="tab" aria-selected="false" data-tab="d3">Ordrer</button>
+            </div></div>
+            <div class="demo-body" id="d1" role="tabpanel">
+              <div class="demo-cards">
+                <div class="demo-card"><b>1.284</b><span>enheder på lager</span></div>
+                <div class="demo-card"><b>7</b><span>varer under min.</span></div>
+                <div class="demo-card"><b>412.900 kr.</b><span>lagerværdi</span></div>
+              </div>
+              <table><thead><tr><th>Bevægelse</th><th>Antal</th><th>Status</th></tr></thead><tbody>
+                <tr><td>Bordben model A → Ordre #1042</td><td>−12</td><td><span class="badge b-ok">afsendt</span></td></tr>
+                <tr><td>Understel sort → modtaget</td><td>+40</td><td><span class="badge b-ok">indkøb</span></td></tr>
+                <tr><td>Bordben model C</td><td>3 tilbage</td><td><span class="badge b-lo">bestil nu</span></td></tr>
+              </tbody></table>
+            </div>
+            <div class="demo-body" id="d2" role="tabpanel" hidden>
+              <table><thead><tr><th>Vare</th><th>Antal</th><th>Placering</th><th>Status</th></tr></thead><tbody>
+                <tr><td>Bordben model A · 71 cm</td><td>86</td><td>Rum A · Hylde 2</td><td><span class="badge b-ok">ok</span></td></tr>
+                <tr><td>Understel sort · 120 cm</td><td>44</td><td>Rum B · Hylde 1</td><td><span class="badge b-ok">ok</span></td></tr>
+                <tr><td>Bordben model C · 43 cm</td><td>3</td><td>Rum A · Hylde 5</td><td><span class="badge b-lo">under min.</span></td></tr>
+                <tr><td>Stel hvid · 140 cm</td><td>12</td><td>Rum C · Gulv</td><td><span class="badge b-md">bestil snart</span></td></tr>
+              </tbody></table>
+            </div>
+            <div class="demo-body" id="d3" role="tabpanel" hidden>
+              <table><thead><tr><th>Ordre</th><th>Kunde</th><th>Status</th></tr></thead><tbody>
+                <tr><td>#1044</td><td>K. Hansen</td><td><span class="badge b-md">plukkes</span></td></tr>
+                <tr><td>#1043</td><td>Webshop</td><td><span class="badge b-ok">pakket</span></td></tr>
+                <tr><td>#1042</td><td>B. Larsen</td><td><span class="badge b-ok">afsendt</span></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec paper gridline" id="proces">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">03 · Proces</span>
+      <h2>Fra første streg til live på under en uge.</h2>
+      <p class="sec-sub">Ingen lange møderækker og ingen fakturachok. Du ser noget rigtigt allerede efter to dage.</p>
+    </div>
+    <div class="steps">
+      <article class="step rv"><span class="step-day">Dag <em>0</em></span><h3>Skitsen</h3><p>Et gratis og uforpligtende møde — fysisk eller telefon. Vi lytter, stiller spørgsmål og tegner løsningen sammen med dig. Du får en fast pris med hjem.</p></article>
+      <article class="step rv rv-d1"><span class="step-day">Dag <em>1–2</em></span><h3>Første udkast</h3><p>Du får et klikbart udkast på en rigtig webadresse — ikke en PDF. Klik rundt på mobilen og mærk efter, om det føles rigtigt.</p></article>
+      <article class="step rv rv-d2"><span class="step-day">Dag <em>3–5</em></span><h3>Byg &amp; finpuds</h3><p>Vi retter til, sætter dit indhold ind og tester på alle skærme. Du er med hele vejen — intet går live, før du har godkendt det.</p></article>
+      <article class="step rv rv-d3"><span class="step-day"><em>Live</em></span><h3>Lancering</h3><p>Siden går i luften, og vi viser dig, hvordan alt virker. De første 30 dage justerer vi gratis, hvis noget skal sidde anderledes.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section class="sec gridbg" id="pris">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">04 · Priser</span>
+      <h2>Regn selv din pris ud. Lige nu.</h2>
+      <p class="sec-sub">Ingen "ring for pris". Vælg hvad du har brug for, og se et ærligt, vejledende interval — den faste pris får du efter skitsemødet.</p>
+    </div>
+    <div class="calc rv">
+      <div class="calc-panel">
+        <fieldset>
+          <legend>Hvad skal vi bygge?</legend>
+          <div class="opts" id="calcType">
+            <div class="opt"><input type="radio" name="ctype" id="t1" value="web" checked><label for="t1"><b>Hjemmeside</b><span>Præsentation, menukort, kontakt</span><span class="pr">fra 4.995 kr.</span></label></div>
+            <div class="opt"><input type="radio" name="ctype" id="t2" value="webbook"><label for="t2"><b>Hjemmeside + booking</b><span>Kunder booker selv, direkte i din kalender</span><span class="pr">fra 7.995 kr.</span></label></div>
+            <div class="opt"><input type="radio" name="ctype" id="t3" value="shop"><label for="t3"><b>Webshop</b><span>Produkter, kurv og betaling</span><span class="pr">fra 12.995 kr.</span></label></div>
+            <div class="opt"><input type="radio" name="ctype" id="t4" value="system"><label for="t4"><b>Internt system</b><span>Lager, ordrer, kunder — skræddersyet</span><span class="pr">fra 14.995 kr.</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Tilvalg</legend>
+          <div class="opts" id="calcAdd">
+            <div class="opt"><input type="checkbox" id="a1" value="1495" data-name="Tekstforfatning"><label for="a1"><b>Tekstforfatning</b><span>Vi skriver alle tekster, der sælger</span><span class="pr">+ 1.495 kr.</span></label></div>
+            <div class="opt"><input type="checkbox" id="a2" value="2495" data-name="Logo og visuel identitet"><label for="a2"><b>Logo &amp; identitet</b><span>Logo, farver og typografi</span><span class="pr">+ 2.495 kr.</span></label></div>
+            <div class="opt"><input type="checkbox" id="a3" value="3495" data-name="AI-funktioner"><label for="a3"><b>AI-funktioner</b><span>Chat-assistent, autoudfyldning m.m.</span><span class="pr">+ 3.495 kr.</span></label></div>
+            <div class="opt"><input type="checkbox" id="a4" value="495" data-name="Eget domæne-opsætning"><label for="a4"><b>Eget domæne</b><span>Opsætning af ditnavn.dk</span><span class="pr">+ 495 kr.</span></label></div>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="calc-out" aria-live="polite">
+        <span class="lbl">Vejledende pris</span>
+        <div class="sum" id="calcSum">4.995 kr.</div>
+        <p class="note">Engangsbeløb · 0 kr./md. i hosting<br>Fast pris efter gratis skitsemøde</p>
+        <ul id="calcList"></ul>
+        <button class="btn btn-p" id="calcCta" style="width:100%">Send mig et konkret tilbud</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec paper gridline" id="udtalelser">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">05 · Udtalelser</span>
+      <h2>Det siger dem, vi bygger for.</h2>
+    </div>
+    <div class="quotes">
+      <!-- UDKAST: erstat med ægte, godkendte citater før bred deling -->
+      <figure class="quote rv"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Mine kunder booker selv tid midt om natten, og jeg slipper for telefonen i arbejdstiden. Det har ændret min hverdag.</p><footer><b>Ejeren</b>Stenlille Herrefrisør</footer></figure>
+      <figure class="quote rv rv-d1"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Hele menukortet online og søgbart — og siden så flottere ud end kæderne. Bygget på to dage.</p><footer><b>Ejeren</b>King Pizza, Stenlille</footer></figure>
+      <figure class="quote rv rv-d2"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Vi styrede lageret i regneark og hukommelsen. Nu scanner vi varerne på mobilen, og systemet siger selv til, når vi skal bestille.</p><footer><b>Møbelvirksomhed</b>Lagersystem-kunde</footer></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec gridbg" id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">06 · FAQ</span>
+      <h2>Det spørger folk altid om.</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Hvad koster en hjemmeside?</summary><p>Fra 4.995 kr. som engangsbeløb — brug prisberegneren ovenfor til dit konkrete behov. Der er ingen abonnementer eller skjulte gebyrer: hosting koster 0 kr. om måneden, fordi vi bygger siderne, så de kan ligge gratis og lynhurtigt hos GitHub. Du betaler kun for et domæne (ca. 50 kr./år), hvis du vil have dit eget navn.</p></details>
+      <details><summary>Hvor hurtigt kan I levere?</summary><p>Du ser et klikbart udkast på en rigtig webadresse inden for 48 timer efter skitsemødet. De fleste sider er live inden for en uge. Interne systemer tager typisk 2–4 uger afhængigt af omfang.</p></details>
+      <details><summary>Ejer jeg selv siden og koden?</summary><p>Ja, 100 %. Koden ligger i dit navn, og du kan til enhver tid tage den med et andet sted hen. Ingen binding, ingen platform du er fanget i.</p></details>
+      <details><summary>Hvad med domæne og e-mail?</summary><p>Vi sætter dit domæne (ditnavn.dk) op som tilvalg, og hjælper med at pege det rigtigt. E-mail beholder du hos din nuværende udbyder — vi rører ikke noget, der virker.</p></details>
+      <details><summary>Hvad er et "internt system" egentlig?</summary><p>Det er de programmer, din virksomhed bruger i hverdagen: lagerstyring, ordreoverblik, booking, kundekartotek, pluklister. I stedet for at betale abonnement på et standardsystem, der passer 80 %, bygger vi ét, der passer 100 % — og som du ejer.</p></details>
+      <details><summary>Kan I overtage min eksisterende side?</summary><p>Ja. Vi bygger typisk en ny og bedre udgave ved siden af, viser dig den live, og først når du er tilfreds, peger vi dit domæne over på den nye. Din gamle side kører uforstyrret imens.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="kontakt" style="background:var(--ink-2)">
+  <div class="wrap contact">
+    <div class="contact-info">
+      <div class="sec-head rv" style="margin-bottom:26px">
+        <span class="sec-no">07 · Kontakt</span>
+        <h2>Lad os tegne din løsning.</h2>
+      </div>
+      <p class="rv">Fortæl os kort, hvad du drømmer om — så vender vi tilbage inden for 24 timer med en ærlig vurdering og et forslag til næste streg. Helt uforpligtende.</p>
+      <div class="pt rv"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:nickguidesyou@gmail.com">nickguidesyou@gmail.com</a></div>
+      <div class="pt rv"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Svar inden for 24 timer — alle ugens dage</div>
+    </div>
+    <form class="cf rv" id="cform" novalidate>
+      <label>Dit navn
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Mail eller telefon
+        <input type="text" name="contact" autocomplete="email" required>
+      </label>
+      <label>Hvad drømmer du om?
+        <textarea name="msg" placeholder="Fx: En ny hjemmeside til mit værksted med onlinebooking …" required></textarea>
+      </label>
+      <div class="hp" aria-hidden="true"><label>Udfyld ikke dette felt<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="cf-msg" id="cmsg" role="status"></div>
+      <button class="btn btn-p" type="submit" id="csend">Send — helt uforpligtende</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-in">
+    <a class="logo" href="#top" aria-label="Til toppen">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#161b26"/><path d="M14 22h36M14 22l10 24 8-16 8 16 10-24" stroke="#ff5a1f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tegnestuen
+    </a>
+    <nav aria-label="Sidefod">
+      <a href="#services">Løsninger</a><a href="#cases">Cases</a><a href="#proces">Proces</a><a href="#pris">Priser</a><a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="foot-meta">
+      <span>© 2026 Tegnestuen · Digitalt håndværk til alle brancher</span>
+      <span>Denne side er naturligvis bygget af os selv — den vejer under 100 KB og loader på et blink.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CHAT ============ -->
+<button class="chat-fab" id="chatFab" aria-expanded="false" aria-controls="chatBox">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#1a0c04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span>Spørg os</span>
+</button>
+<div class="chat-box" id="chatBox" role="dialog" aria-label="Chat med Tegnestuen">
+  <div class="chat-head">
+    <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#10141d"/><path d="M14 22h36M14 22l10 24 8-16 8 16 10-24" stroke="#ff5a1f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><b>Spørg Tegnestuen</b><small>AI-assistent · svarer med det samme</small></div>
+    <button id="chatClose" aria-label="Luk chat">×</button>
+  </div>
+  <div class="chat-log" id="chatLog">
+    <div class="msg bot">Hej! 👋 Spørg mig om priser, proces eller hvad vi kan bygge for dig — jeg svarer med det samme.</div>
+  </div>
+  <form class="chat-in" id="chatForm">
+    <input type="text" id="chatInput" placeholder="Skriv dit spørgsmål …" autocomplete="off" aria-label="Dit spørgsmål">
+    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="#1a0c04" aria-hidden="true"><path d="M2 21 23 12 2 3v7l15 2-15 2z"/></svg></button>
+  </form>
+</div>
+
+<script>
+'use strict';
+/* Deploy-URL for Tegnestuens Apps Script-backend (kontakt + chat).
+   Tom streng = fallback til mailto/lead-besked. */
+const TEGNESTUEN_API = '';
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- nav ---------- */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 30), {passive:true});
+nav.classList.toggle('on', scrollY > 30);
+
+/* ---------- reveals + counters + hero draw ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  if (e.target.id === 'bp') e.target.classList.add('go');
+  e.target.querySelectorAll('[data-count]').forEach(countUp);
+  io.unobserve(e.target);
+}), {threshold:.18});
+$$('.rv, #bp').forEach(el => io.observe(el));
+
+function countUp(el){
+  if (el.dataset.done) return; el.dataset.done = 1;
+  const end = +el.dataset.count;
+  if (REDUCED || end === 0){ el.textContent = end; return; }
+  const t0 = performance.now(), dur = 1300;
+  (function tick(t){
+    const p = Math.min((t - t0)/dur, 1);
+    el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+/* ---------- magnetiske knapper (kun mus) ---------- */
+if (matchMedia('(pointer:fine)').matches && !REDUCED){
+  $$('.btn').forEach(b => {
+    b.addEventListener('mousemove', e => {
+      const r = b.getBoundingClientRect();
+      b.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.24}px)`;
+    });
+    b.addEventListener('mouseleave', () => b.style.transform = '');
+  });
+}
+
+/* ---------- live case previews (klik-til-load) ---------- */
+$$('.poster[data-src]').forEach(p => p.addEventListener('click', () => {
+  const f = document.createElement('iframe');
+  f.src = p.dataset.src;
+  f.loading = 'lazy';
+  f.title = p.getAttribute('aria-label') || 'Live preview';
+  p.replaceWith(f);
+}));
+
+/* ---------- SESU demo-faner ---------- */
+$$('.demo-tab').forEach(t => t.addEventListener('click', () => {
+  $$('.demo-tab').forEach(x => { x.classList.toggle('on', x===t); x.setAttribute('aria-selected', x===t); });
+  ['d1','d2','d3'].forEach(id => $('#'+id).hidden = id !== t.dataset.tab);
+}));
+
+/* ---------- prisberegner ---------- */
+/* PRICING — UDKAST: justér frit. Beløb i kr., engangs. */
+const PRICING = { web:4995, webbook:7995, shop:12995, system:14995 };
+const TYPE_NAMES = { web:'Hjemmeside', webbook:'Hjemmeside + booking', shop:'Webshop', system:'Internt system' };
+const kr = n => n.toLocaleString('da-DK') + ' kr.';
+
+function calc(){
+  const type = $('input[name=ctype]:checked').value;
+  const adds = $$('#calcAdd input:checked');
+  const base = PRICING[type];
+  const extra = adds.reduce((s,a) => s + +a.value, 0);
+  const total = base + extra;
+  $('#calcSum').textContent = 'ca. ' + kr(total) + ' – ' + kr(Math.round(total*1.3/500)*500);
+  $('#calcList').innerHTML =
+    `<li><b>${TYPE_NAMES[type]}</b><span>${kr(base)}</span></li>` +
+    adds.map(a => `<li><b>${a.dataset.name}</b><span>+ ${kr(+a.value)}</span></li>`).join('');
+  return { type, adds, total };
+}
+$('#calcType').addEventListener('change', calc);
+$('#calcAdd').addEventListener('change', calc);
+calc();
+
+$('#calcCta').addEventListener('click', () => {
+  const { type, adds, total } = calc();
+  const msg = `Jeg er interesseret i: ${TYPE_NAMES[type]}` +
+    (adds.length ? ` + ${adds.map(a=>a.dataset.name.toLowerCase()).join(', ')}` : '') +
+    ` (beregnet ca. ${kr(total)}). `;
+  const ta = $('#cform textarea');
+  if (!ta.value.trim()) ta.value = msg;
+  $('#kontakt').scrollIntoView({behavior: REDUCED ? 'auto' : 'smooth'});
+  setTimeout(() => $('#cform input[name=name]').focus({preventScroll:true}), REDUCED ? 0 : 600);
+});
+
+/* ---------- API-hjælper (samme mønster som vores andre systemer) ---------- */
+async function api(payload){
+  if (!TEGNESTUEN_API) throw new Error('noapi');
+  const r = await fetch(TEGNESTUEN_API, {
+    method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(payload)
+  });
+  const j = await r.json();
+  if (j.error) throw new Error(j.error);
+  return j;
+}
+
+/* ---------- kontaktformular ---------- */
+$('#cform').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, m = $('#cmsg'), btn = $('#csend');
+  const name = f.name.value.trim(), contact = f.contact.value.trim(), msg = f.msg.value.trim();
+  if (f.website.value) return;                       // honeypot
+  if (!name || !contact || !msg){
+    m.className = 'cf-msg err'; m.textContent = 'Udfyld venligst alle tre felter.'; return;
+  }
+  btn.disabled = true; btn.textContent = 'Sender …';
+  try {
+    await api({ action:'contact', name, contact, msg });
+    m.className = 'cf-msg ok';
+    m.textContent = 'Tak! Din besked er sendt — du hører fra os inden for 24 timer. ✏️';
+    f.reset();
+  } catch {
+    const mail = 'mailto:nickguidesyou@gmail.com?subject=' + encodeURIComponent('Bud fra tegnestuen.dk — ' + name)
+      + '&body=' + encodeURIComponent(msg + '\n\nKontakt: ' + contact);
+    m.className = 'cf-msg err';
+    m.innerHTML = 'Formularen driller lige nu — <a href="' + mail + '">send i stedet en mail med ét klik</a>, så svarer vi lige så hurtigt.';
+  }
+  btn.disabled = false; btn.textContent = 'Send — helt uforpligtende';
+});
+
+/* ---------- chat ---------- */
+const chatBox = $('#chatBox'), chatLog = $('#chatLog'), chatHist = [];
+let chatDead = false;
+$('#chatFab').addEventListener('click', () => {
+  const open = chatBox.classList.toggle('open');
+  $('#chatFab').setAttribute('aria-expanded', open);
+  if (open) $('#chatInput').focus();
+});
+$('#chatClose').addEventListener('click', () => {
+  chatBox.classList.remove('open');
+  $('#chatFab').setAttribute('aria-expanded','false');
+});
+function addMsg(txt, who){
+  const d = document.createElement('div');
+  d.className = 'msg ' + who; d.textContent = txt;
+  chatLog.appendChild(d); chatLog.scrollTop = chatLog.scrollHeight;
+  return d;
+}
+$('#chatForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const inp = $('#chatInput'), q = inp.value.trim();
+  if (!q) return;
+  inp.value = '';
+  addMsg(q, 'me');
+  if (chatDead){
+    addMsg('Skriv til os i formularen ovenfor eller på nickguidesyou@gmail.com — så svarer vi personligt inden for 24 timer. 👍', 'bot');
+    return;
+  }
+  const t = document.createElement('div');
+  t.className = 'msg bot typing'; t.innerHTML = '<i></i><i></i><i></i>';
+  chatLog.appendChild(t); chatLog.scrollTop = chatLog.scrollHeight;
+  try {
+    chatHist.push({role:'user', content:q});
+    const j = await api({ action:'chat', messages: chatHist.slice(-8) });
+    chatHist.push({role:'assistant', content:j.reply});
+    t.remove(); addMsg(j.reply, 'bot');
+  } catch {
+    t.remove(); chatDead = true;
+    addMsg('Jeg kan ikke svare automatisk lige nu — men et menneske kan! Skriv i kontaktformularen ovenfor eller til nickguidesyou@gmail.com, så vender vi tilbage inden for 24 timer.', 'bot');
+  }
+});
+</script>
+</body>
+</html>
