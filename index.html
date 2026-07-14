@@ -255,23 +255,51 @@ section{position:relative}
 .brow-bar i:nth-child(1){background:#ff5f57}.brow-bar i:nth-child(2){background:#febc2e}.brow-bar i:nth-child(3){background:#28c840}
 .brow-url{flex:1;margin-left:8px;background:var(--ink);border-radius:8px;padding:5px 14px;font-size:.78rem;color:var(--tx-dim);font-family:var(--disp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .brow-view{position:relative;aspect-ratio:16/10.5;background:var(--ink)}
-.brow-view iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.poster{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  width:100%;border:0;cursor:pointer;color:var(--tx);
-  background:radial-gradient(120% 120% at 50% 0%,rgba(255,90,31,.14),transparent 60%),var(--ink-2);
-}
-.poster .play{
-  width:64px;height:64px;border-radius:50%;background:var(--acc);display:grid;place-items:center;
-  box-shadow:0 10px 34px -8px rgba(255,90,31,.7);transition:transform .2s;
-}
-.poster:hover .play{transform:scale(1.1)}
-.poster .play svg{width:24px;height:24px;margin-left:3px}
-.poster b{font-family:var(--disp);font-size:1.05rem}
-.poster small{color:var(--tx-dim)}
-.poster .mini{position:absolute;inset:0;z-index:-1;opacity:.35;display:grid;place-items:center;padding:28px}
+.demo-dim{color:var(--tx-dim);font-family:var(--body);font-weight:400}
 
-/* SESU demo mock */
+/* pizzeria-demo */
+.pz-tools{padding:10px 16px 8px;display:grid;gap:8px}
+.pz-tools input{font:inherit;font-size:12px;background:var(--ink-3);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--tx);width:100%}
+.pz-tools input:focus{outline:none;border-color:var(--acc)}
+.pz-chips{display:flex;gap:6px;flex-wrap:wrap}
+.pz-chip{background:none;border:1px solid var(--line);color:var(--tx-dim);padding:4px 12px;border-radius:99px;cursor:pointer;font-size:11px;font-family:var(--disp)}
+.pz-chip.on{background:var(--acc);border-color:var(--acc);color:#1a0c04;font-weight:600}
+.pz-list{list-style:none;margin:0;padding:4px 16px 14px;overflow-y:auto;flex:1;display:grid;gap:0;align-content:start}
+.pz-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 2px;border-bottom:1px solid rgba(167,180,205,.08)}
+.pz-list li b{font-weight:600;font-family:var(--disp)}
+.pz-list li em{font-style:normal;display:block;color:var(--tx-dim);font-size:10.5px}
+.pz-list li span{font-family:var(--disp);color:var(--acc);white-space:nowrap}
+.pz-list .none{color:var(--tx-dim);border:none;justify-content:center;padding:20px 0}
+
+/* booking-demo */
+.bk-body{flex:1;display:flex;flex-direction:column;padding:10px 16px 12px;gap:9px;overflow:hidden}
+.bk-row{display:flex;gap:6px;flex-wrap:wrap}
+.bk-svc,.bk-day{background:var(--ink-3);border:1px solid var(--line);color:var(--tx-dim);padding:5px 11px;border-radius:8px;cursor:pointer;font-size:11px;font-family:var(--disp)}
+.bk-svc.on,.bk-day.on{background:var(--acc);border-color:var(--acc);color:#1a0c04;font-weight:600}
+.bk-times{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;flex:1;align-content:start;overflow-y:auto}
+.bk-t{background:none;border:1px solid var(--line);color:var(--tx);padding:7px 4px;border-radius:8px;cursor:pointer;font-size:11px;font-family:var(--disp)}
+.bk-t.on{background:var(--acc);border-color:var(--acc);color:#1a0c04;font-weight:700}
+.bk-t:disabled{opacity:.25;cursor:default;text-decoration:line-through}
+.bk-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:9px;font-size:11px;color:var(--tx-dim)}
+.bk-go{background:var(--acc);border:none;color:#1a0c04;font-family:var(--disp);font-weight:700;font-size:11.5px;padding:8px 16px;border-radius:8px;cursor:pointer}
+.bk-go:disabled{opacity:.35;cursor:default}
+.bk-done{position:absolute;inset:0;background:var(--ink);display:grid;place-items:center;align-content:center;gap:8px;text-align:center;padding:20px}
+.bk-done[hidden]{display:none}
+.bk-done b{font-family:var(--disp);font-size:1.3rem;color:#5ae07a}
+.bk-done span{color:var(--tx)}
+.bk-done small{color:var(--tx-dim)}
+
+/* blyants-cursor (kun mus) */
+@media (pointer:fine){
+  body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 22l1.5-5L18 4.5a2.1 2.1 0 0 1 3 0l.5.5a2.1 2.1 0 0 1 0 3L9 20.5 4 22z' fill='%23ff5a1f' stroke='%230b0e14' stroke-width='1.4'/%3E%3Cpath d='M5.5 17l3.5 3.5' stroke='%230b0e14' stroke-width='1.2'/%3E%3C/svg%3E") 3 23, auto}
+}
+
+/* håndtegnet scroll-fremdrift */
+#progress{position:fixed;left:6px;top:0;height:100vh;width:10px;z-index:55;pointer-events:none}
+#progress path{stroke:var(--acc);stroke-width:2.5;fill:none;stroke-linecap:round;opacity:.75}
+@media (max-width:700px){#progress{display:none}}
+
+/* lager-demo */
 .demo{position:absolute;inset:0;background:#0d1017;font-size:11.5px;display:flex;flex-direction:column;overflow:hidden}
 .demo-top{display:flex;gap:14px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);font-family:var(--disp)}
 .demo-top b{color:var(--acc)}
@@ -478,6 +506,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
 <div class="grain" aria-hidden="true"></div>
 <canvas id="trail" aria-hidden="true"></canvas>
 <div id="hud" aria-hidden="true"></div>
+<svg id="progress" viewBox="0 0 10 100" preserveAspectRatio="none" aria-hidden="true"><path id="progressPath" pathLength="100" d="M5 0 C7.5 7 2.5 14 5 22 C7.5 30 2.5 37 5 45 C7.5 53 2.5 60 5 68 C7.5 76 2.5 84 5 92 C6 95 5 98 5 100" stroke-dasharray="100" stroke-dashoffset="100"/></svg>
 
 <header class="nav" id="nav">
   <div class="nav-in">
@@ -615,30 +644,38 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">02 · Cases</span>
-      <h2>Se det live. Ikke på et screenshot.</h2>
-      <p class="sec-sub">Vores arbejde kører i drift lige nu. Klik og prøv siderne direkte herfra — det tør de færreste bureauer.</p>
+      <h2>Prøv dem selv. Lige her.</h2>
+      <p class="sec-sub">Anonymiserede demoer af rigtige leverancer — alt du ser herunder virker og kan klikkes på. Det tør de færreste bureauer.</p>
     </div>
 
     <article class="case rv">
       <div class="case-txt">
-        <span class="case-tag">Restaurant · Hjemmeside</span>
-        <h3>King Pizza: et menukort der føles som en biografplakat</h3>
-        <p>Pizzeriaet konkurrerede mod nabobyens skabelonsider. Vi tegnede en cinematisk side med hele menukortet — over 100 retter, søgbart på ét sekund — plus en pizza-roulette, der lader kongen vælge for dig.</p>
+        <span class="case-tag">Pizzeria · Hjemmeside</span>
+        <h3>Et menukort der føles som en biografplakat</h3>
+        <p>Et lokalt pizzeria konkurrerede mod nabobyens skabelonsider. Vi tegnede en cinematisk side med hele menukortet — over 100 retter, søgbart på ét sekund — plus en menu-roulette, der vælger for de ubeslutsomme. Prøv søgningen i demoen.</p>
         <div class="chips">
           <span class="chip"><b>100+</b> retter, søgbare</span>
           <span class="chip">Live på <b>2 dage</b></span>
           <span class="chip"><b>0 kr.</b> i drift/md.</span>
         </div>
-        <a class="case-link" href="https://nickguidesyou-jpg.github.io/king-pizza/" target="_blank" rel="noopener"><span>Besøg siden</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a class="case-link" href="#kontakt"><span>Få sådan en side</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
       </div>
       <div class="brow">
-        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">king-pizza · live</span></div>
+        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">menukort · interaktiv demo</span></div>
         <div class="brow-view">
-          <button class="poster" data-src="https://nickguidesyou-jpg.github.io/king-pizza/" aria-label="Indlæs live preview af King Pizzas hjemmeside">
-            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#1a0c04"><path d="M8 5v14l11-7z"/></svg></span>
-            <b>Prøv siden live</b>
-            <small>Indlæses først når du klikker</small>
-          </button>
+          <div class="demo pz">
+            <div class="demo-top"><b>◆</b> Pizzeria <span class="demo-dim">— demo</span></div>
+            <div class="pz-tools">
+              <input id="pzq" type="search" placeholder="Søg i 100+ retter … prøv &quot;kebab&quot;" aria-label="Søg i menuen">
+              <div class="pz-chips" role="group" aria-label="Kategorier">
+                <button class="pz-chip on" data-c="alle">Alle</button>
+                <button class="pz-chip" data-c="pizza">Pizza</button>
+                <button class="pz-chip" data-c="burger">Burger</button>
+                <button class="pz-chip" data-c="salat">Salat</button>
+              </div>
+            </div>
+            <ul class="pz-list" id="pzList" aria-live="polite"></ul>
+          </div>
         </div>
       </div>
     </article>
@@ -646,31 +683,43 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
     <article class="case rv">
       <div class="case-txt">
         <span class="case-tag">Frisør · Hjemmeside + bookingsystem</span>
-        <h3>Stenlille Herrefrisør: booking døgnet rundt — uden abonnement</h3>
-        <p>Frisøren betalte for en platformside uden onlinebooking. Vi byggede en ny side med bookingsystem koblet direkte på hans Google Kalender: kunderne booker 24/7, får bekræftelse på mail og kan endda booke op til 5 personer i træk.</p>
+        <h3>Booking døgnet rundt — uden abonnement</h3>
+        <p>En herrefrisør betalte for en platformside uden onlinebooking. Vi byggede en ny side med bookingsystem koblet direkte på frisørens egen kalender: kunderne booker 24/7, får bekræftelse på mail og kan endda booke op til 5 personer i træk. Book en (fiktiv) tid i demoen.</p>
         <div class="chips">
           <span class="chip">Booking <b>24/7</b></span>
           <span class="chip"><b>4,8★</b> på Google vist på siden</span>
           <span class="chip">Gruppebooking op til <b>5</b></span>
         </div>
-        <a class="case-link" href="https://nickguidesyou-jpg.github.io/shf-preview/" target="_blank" rel="noopener"><span>Besøg siden</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a class="case-link" href="#kontakt"><span>Få sådan et system</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
       </div>
       <div class="brow">
-        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">stenlille-herrefrisør · live</span></div>
+        <div class="brow-bar" aria-hidden="true"><i></i><i></i><i></i><span class="brow-url">booking · interaktiv demo</span></div>
         <div class="brow-view">
-          <button class="poster" data-src="https://nickguidesyou-jpg.github.io/shf-preview/" aria-label="Indlæs live preview af Stenlille Herrefrisørs hjemmeside">
-            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#1a0c04"><path d="M8 5v14l11-7z"/></svg></span>
-            <b>Prøv siden live</b>
-            <small>Indlæses først når du klikker</small>
-          </button>
+          <div class="demo bk">
+            <div class="demo-top"><b>◆</b> Frisør <span class="demo-dim">— demo</span></div>
+            <div class="bk-body">
+              <div class="bk-row" role="group" aria-label="Vælg behandling">
+                <button class="bk-svc on" data-s="Klip">Klip · 250 kr.</button>
+                <button class="bk-svc" data-s="Skæg">Skæg · 150 kr.</button>
+                <button class="bk-svc" data-s="Klip + skæg">Klip + skæg · 350 kr.</button>
+              </div>
+              <div class="bk-row" id="bkDays" role="group" aria-label="Vælg dag"></div>
+              <div class="bk-times" id="bkTimes" aria-live="polite"></div>
+              <div class="bk-foot">
+                <span id="bkPick">Vælg en tid …</span>
+                <button class="bk-go" id="bkGo" disabled>Book tid</button>
+              </div>
+            </div>
+            <div class="bk-done" id="bkDone" hidden><b>✓ Tiden er din</b><span id="bkSum"></span><small>(bare rolig — det er en demo)</small></div>
+          </div>
         </div>
       </div>
     </article>
 
     <article class="case rv">
       <div class="case-txt">
-        <span class="case-tag">Møbelvirksomhed · Internt system</span>
-        <h3>SESU: et komplet lagersystem — bygget om deres hverdag</h3>
+        <span class="case-tag">Møbelproducent · Internt system</span>
+        <h3>Fra regneark til komplet lagersystem</h3>
         <p>Fra regneark til fuldt lagersystem: varer, ordrer, indkøb, forsendelser og stregkodescanning fra mobilen. Systemet overvåger selv priser hos konkurrenterne og skriver AI-udkast til genbestillingsmails. Kører bag login — derfor ser du en demo med anonyme tal.</p>
         <div class="chips">
           <span class="chip"><b>35+</b> funktioner</span>
@@ -792,9 +841,9 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
     </div>
     <div class="quotes">
       <!-- UDKAST: erstat med ægte, godkendte citater før bred deling -->
-      <figure class="quote rv"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Mine kunder booker selv tid midt om natten, og jeg slipper for telefonen i arbejdstiden. Det har ændret min hverdag.</p><footer><b>Ejeren</b>Stenlille Herrefrisør</footer></figure>
-      <figure class="quote rv rv-d1"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Hele menukortet online og søgbart — og siden så flottere ud end kæderne. Bygget på to dage.</p><footer><b>Ejeren</b>King Pizza, Stenlille</footer></figure>
-      <figure class="quote rv rv-d2"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Vi styrede lageret i regneark og hukommelsen. Nu scanner vi varerne på mobilen, og systemet siger selv til, når vi skal bestille.</p><footer><b>Møbelvirksomhed</b>Lagersystem-kunde</footer></figure>
+      <figure class="quote rv"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Mine kunder booker selv tid midt om natten, og jeg slipper for telefonen i arbejdstiden. Det har ændret min hverdag.</p><footer><b>Ejeren</b>Herrefrisør, Vestsjælland</footer></figure>
+      <figure class="quote rv rv-d1"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Hele menukortet online og søgbart — og siden så flottere ud end kæderne. Bygget på to dage.</p><footer><b>Ejeren</b>Lokalt pizzeria</footer></figure>
+      <figure class="quote rv rv-d2"><svg viewBox="0 0 24 24" fill="#ff5a1f" aria-hidden="true"><path d="M10 8H6a4 4 0 0 0-4 4v8h8v-8H6a2 2 0 0 1 2-2h2V8zm12 0h-4a4 4 0 0 0-4 4v8h8v-8h-4a2 2 0 0 1 2-2h2V8z"/></svg><p>Vi styrede lageret i regneark og hukommelsen. Nu scanner vi varerne på mobilen, og systemet siger selv til, når vi skal bestille.</p><footer><b>Lagerchefen</b>Møbelproducent</footer></figure>
     </div>
   </div>
 </section>
@@ -990,16 +1039,96 @@ if (!REDUCED){
   ['pointermove','scroll','touchstart','keydown'].forEach(ev => addEventListener(ev, startTyper, {passive:true, once:false}));
 }
 
-/* ---------- live case previews (klik-til-load) ---------- */
-$$('.poster[data-src]').forEach(p => p.addEventListener('click', () => {
-  const f = document.createElement('iframe');
-  f.src = p.dataset.src;
-  f.loading = 'lazy';
-  f.title = p.getAttribute('aria-label') || 'Live preview';
-  p.replaceWith(f);
-}));
+/* ---------- scroll-fremdrift (håndtegnet streg) ---------- */
+const progPath = $('#progressPath');
+let progTick = false;
+function drawProgress(){
+  progTick = false;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const p = max > 0 ? Math.min(scrollY / max, 1) : 0;
+  progPath.style.strokeDashoffset = 100 - p * 100;
+}
+addEventListener('scroll', () => { if (!progTick){ progTick = true; requestAnimationFrame(drawProgress); } }, {passive:true});
+drawProgress();
 
-/* ---------- SESU demo-faner ---------- */
+/* ---------- pizzeria-demo ---------- */
+const PZ_MENU = [
+  {n:'Margherita', d:'tomat, ost, oregano', p:79, c:'pizza'},
+  {n:'Kebab-pizza', d:'kebab, løg, dressing', p:95, c:'pizza'},
+  {n:'Pepperoni', d:'pepperoni, ekstra ost', p:89, c:'pizza'},
+  {n:'Grill-special', d:'bacon, kylling, chili', p:99, c:'pizza'},
+  {n:'Vegetar', d:'peberfrugt, champignon, oliven', p:85, c:'pizza'},
+  {n:'Byens burger', d:'200 g bøf, cheddar, sprød løg', p:95, c:'burger'},
+  {n:'Crispy chicken', d:'kylling, chilimayo, syltede agurker', p:92, c:'burger'},
+  {n:'Kebabsalat', d:'kebab, feta, dressing', p:82, c:'salat'},
+  {n:'Kyllingesalat', d:'kylling, avocado, rugcroutoner', p:84, c:'salat'},
+  {n:'Pizza-sandwich', d:'kebab eller kylling, valgfri dressing', p:75, c:'pizza'}
+];
+function pzRender(){
+  const q = $('#pzq').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const cat = $('.pz-chip.on').dataset.c;
+  const hits = PZ_MENU.filter(m =>
+    (cat === 'alle' || m.c === cat) &&
+    q.every(t => (m.n + ' ' + m.d).toLowerCase().includes(t))
+  );
+  $('#pzList').innerHTML = hits.length
+    ? hits.map(m => `<li><div><b>${m.n}</b><em>${m.d}</em></div><span>${m.p} kr.</span></li>`).join('')
+    : '<li class="none">Ingen retter matcher — prøv et andet ord</li>';
+}
+$('#pzq').addEventListener('input', pzRender);
+$$('.pz-chip').forEach(c => c.addEventListener('click', () => {
+  $$('.pz-chip').forEach(x => x.classList.toggle('on', x === c)); pzRender();
+}));
+pzRender();
+
+/* ---------- booking-demo ---------- */
+const bkState = { svc:'Klip', day:null, time:null };
+const BK_DAYS = (() => {
+  const names = ['søn','man','tir','ons','tor','fre','lør'];
+  const out = [], d = new Date();
+  while (out.length < 5){
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() !== 0) out.push({label: names[d.getDay()] + ' ' + d.getDate() + '.', key: d.getDate()});
+  }
+  return out;
+})();
+function bkTimes(dayKey){
+  const out = [];
+  for (let h = 9; h <= 16; h++) for (const m of ['00','30']){
+    if (h === 16 && m === '30') continue;
+    out.push({t: h + ':' + m, free: (h * 7 + +m + dayKey * 3) % 5 !== 0});
+  }
+  return out;
+}
+function bkRender(){
+  $('#bkDays').innerHTML = BK_DAYS.map(d =>
+    `<button class="bk-day${bkState.day===d.key?' on':''}" data-d="${d.key}">${d.label}</button>`).join('');
+  $$('#bkDays .bk-day').forEach(b => b.addEventListener('click', () => {
+    bkState.day = +b.dataset.d; bkState.time = null; bkRender();
+  }));
+  $('#bkTimes').innerHTML = bkState.day == null
+    ? '<button class="bk-t" disabled style="grid-column:1/-1">Vælg først en dag ↑</button>'
+    : bkTimes(bkState.day).map(x =>
+        `<button class="bk-t${bkState.time===x.t?' on':''}" data-t="${x.t}" ${x.free?'':'disabled'}>${x.t}</button>`).join('');
+  $$('#bkTimes .bk-t:not([disabled])').forEach(b => b.addEventListener('click', () => {
+    bkState.time = b.dataset.t; bkRender();
+  }));
+  const day = BK_DAYS.find(d => d.key === bkState.day);
+  $('#bkPick').textContent = bkState.time ? `${bkState.svc} · ${day.label} kl. ${bkState.time}` : 'Vælg en tid …';
+  $('#bkGo').disabled = !bkState.time;
+}
+$$('.bk-svc').forEach(b => b.addEventListener('click', () => {
+  $$('.bk-svc').forEach(x => x.classList.toggle('on', x === b));
+  bkState.svc = b.dataset.s; bkRender();
+}));
+$('#bkGo').addEventListener('click', () => {
+  const day = BK_DAYS.find(d => d.key === bkState.day);
+  $('#bkSum').textContent = `${bkState.svc} · ${day.label} kl. ${bkState.time}`;
+  $('#bkDone').hidden = false;
+});
+bkRender();
+
+/* ---------- lager-demo-faner ---------- */
 $$('.demo-tab').forEach(t => t.addEventListener('click', () => {
   $$('.demo-tab').forEach(x => { x.classList.toggle('on', x===t); x.setAttribute('aria-selected', x===t); });
   ['d1','d2','d3'].forEach(id => $('#'+id).hidden = id !== t.dataset.tab);
