@@ -606,7 +606,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
       <article class="svc rv">
         <div class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div>
         <h3>Hjemmesider</h3>
-        <p class="price">Fra 4.995 kr. — engangsbeløb</p>
+        <p class="price">Fra 4.995 kr. — eller 0 kr. i opstart</p>
         <p>Skræddersyet design tegnet fra bunden — aldrig et tema eller en skabelon. Bygget til at blive fundet på Google og til at få kunder til at handle.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unikt design + tekst der sælger</li>
@@ -622,7 +622,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
       <article class="svc rv rv-d1">
         <div class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div>
         <h3>Interne systemer</h3>
-        <p class="price">Fra 14.995 kr. — engangsbeløb</p>
+        <p class="price">Fra 14.995 kr. — eller 0 kr. i opstart</p>
         <p>Lagerstyring, ordreflow, booking eller kundekartotek — bygget præcis om <em>din</em> hverdag i stedet for at tvinge dig ind i et standardprogram med abonnement.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#e64a12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lager, ordrer, kunder og historik ét sted</li>
@@ -798,7 +798,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
     <div class="sec-head rv">
       <span class="sec-no">04 · Priser</span>
       <h2>Regn selv din pris ud. Lige nu.</h2>
-      <p class="sec-sub">Ingen "ring for pris". Vælg hvad du har brug for, og se et ærligt, vejledende interval — den faste pris får du efter skitsemødet.</p>
+      <p class="sec-sub">Ingen "ring for pris". Vælg hvad du har brug for, og se et ærligt, vejledende interval — den faste pris får du efter skitsemødet. Stram likviditet? Start for 0 kr. og betal i rater.</p>
     </div>
     <div class="calc rv">
       <div class="calc-panel">
@@ -820,11 +820,21 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
             <div class="opt"><input type="checkbox" id="a4" value="495" data-name="Eget domæne-opsætning"><label for="a4"><b>Eget domæne</b><span>Opsætning af ditnavn.dk</span><span class="pr">+ 495 kr.</span></label></div>
           </div>
         </fieldset>
+        <fieldset>
+          <legend>Betaling &amp; efter lancering</legend>
+          <div class="opts" id="calcPay">
+            <div class="opt"><input type="radio" name="cpay" id="p1" value="once" checked><label for="p1"><b>Engangsbeløb</b><span>Betal én gang — billigst i længden</span><span class="pr">0 kr./md.</span></label></div>
+            <div class="opt"><input type="radio" name="cpay" id="p2" value="rate"><label for="p2"><b>0 kr. i opstart</b><span>Del beløbet over 12 måneder (+15 %)</span><span class="pr">fast lav rate/md.</span></label></div>
+          </div>
+          <div class="opts" id="calcSvc" style="margin-top:12px">
+            <div class="opt" style="grid-column:1/-1"><input type="checkbox" id="svcBox"><label for="svcBox"><b>Serviceaftale — ingen binding</b><span>Ændringer inden for 24 timer, overvågning, backup og prioritet</span><span class="pr">+ 249 kr./md.</span></label></div>
+          </div>
+        </fieldset>
       </div>
       <aside class="calc-out" aria-live="polite">
         <span class="lbl">Vejledende pris</span>
         <div class="sum" id="calcSum">4.995 kr.</div>
-        <p class="note">Engangsbeløb · 0 kr./md. i hosting<br>Fast pris efter gratis skitsemøde</p>
+        <p class="note" id="calcNote">Engangsbeløb · 0 kr./md. i hosting<br>Fast pris efter gratis skitsemøde</p>
         <ul id="calcList"></ul>
         <button class="btn btn-p" id="calcCta" style="width:100%">Send mig et konkret tilbud</button>
       </aside>
@@ -857,6 +867,8 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
     </div>
     <div class="faq rv">
       <details><summary>Hvad koster en hjemmeside?</summary><p>Fra 4.995 kr. som engangsbeløb — brug prisberegneren ovenfor til dit konkrete behov. Der er ingen abonnementer eller skjulte gebyrer: hosting koster 0 kr. om måneden, fordi vi bygger siderne, så de kan ligge gratis og lynhurtigt hos GitHub. Du betaler kun for et domæne (ca. 50 kr./år), hvis du vil have dit eget navn.</p></details>
+      <details><summary>Hvad hvis jeg ikke har kapital til hele beløbet nu?</summary><p>Så starter du for 0 kr. og deler beløbet over 12 måneder (+15 % i alt). Din side går live med det samme, du betaler en fast lav rate — og når sidste rate er betalt, ejer du det hele, præcis som ved engangsbeløbet. Ingen skjulte gebyrer, ingen forlængelse.</p></details>
+      <details><summary>Hvad dækker serviceaftalen?</summary><p>For 249 kr./md. — helt uden binding — holder vi din side i topform: ændringer inden for 24 timer (åbningstider, priser, billeder, nye tilbud), overvågning, backup og prioritet, hvis noget haster. Du kan opsige fra måned til måned, og siden er stadig 100 % din.</p></details>
       <details><summary>Hvor hurtigt kan I levere?</summary><p>Du ser et klikbart udkast på en rigtig webadresse inden for 48 timer efter skitsemødet. De fleste sider er live inden for en uge. Interne systemer tager typisk 2–4 uger afhængigt af omfang.</p></details>
       <details><summary>Ejer jeg selv siden og koden?</summary><p>Ja, 100 %. Koden ligger i dit navn, og du kan til enhver tid tage den med et andet sted hen. Ingen binding, ingen platform du er fanget i.</p></details>
       <details><summary>Hvad med domæne og e-mail?</summary><p>Vi sætter dit domæne (ditnavn.dk) op som tilvalg, og hjælper med at pege det rigtigt. E-mail beholder du hos din nuværende udbyder — vi rører ikke noget, der virker.</p></details>
@@ -1135,34 +1147,46 @@ $$('.demo-tab').forEach(t => t.addEventListener('click', () => {
 }));
 
 /* ---------- prisberegner ---------- */
-/* PRICING — UDKAST: justér frit. Beløb i kr., engangs. */
+/* PRICING — UDKAST: justér frit. Beløb i kr., engangs.
+   RATE_FACTOR: tillæg ved 12 rater (0 kr. i opstart). SVC_MD: serviceaftale kr./md. */
 const PRICING = { web:4995, webbook:7995, shop:12995, system:14995 };
 const TYPE_NAMES = { web:'Hjemmeside', webbook:'Hjemmeside + booking', shop:'Webshop', system:'Internt system' };
+const RATE_FACTOR = 1.15, RATE_MONTHS = 12, SVC_MD = 249;
 const kr = n => n.toLocaleString('da-DK') + ' kr.';
 
 function calc(){
   const type = $('input[name=ctype]:checked').value;
   const adds = $$('#calcAdd input:checked');
+  const rate = $('input[name=cpay]:checked').value === 'rate';
+  const svc = $('#svcBox').checked;
   const base = PRICING[type];
   const extra = adds.reduce((s,a) => s + +a.value, 0);
   const total = base + extra;
+  const mdRate = Math.round(total * RATE_FACTOR / RATE_MONTHS / 5) * 5;
   const sumEl = $('#calcSum');
-  sumEl.textContent = 'ca. ' + kr(total) + ' – ' + kr(Math.round(total*1.3/500)*500);
+  sumEl.textContent = rate
+    ? `fra ${RATE_MONTHS} × ${kr(mdRate + (svc ? SVC_MD : 0))}/md.`
+    : 'ca. ' + kr(total) + ' – ' + kr(Math.round(total*1.3/500)*500);
+  $('#calcNote').innerHTML = rate
+    ? `0 kr. i opstart · 0 kr./md. i hosting<br>Du ejer det hele, når sidste rate er betalt`
+    : `Engangsbeløb · ${svc ? 'serviceaftale 249 kr./md.' : '0 kr./md. i alt'}<br>Fast pris efter gratis skitsemøde`;
   if (!REDUCED){ sumEl.classList.remove('pump'); void sumEl.offsetWidth; sumEl.classList.add('pump'); }
   $('#calcList').innerHTML =
     `<li><b>${TYPE_NAMES[type]}</b><span>${kr(base)}</span></li>` +
-    adds.map(a => `<li><b>${a.dataset.name}</b><span>+ ${kr(+a.value)}</span></li>`).join('');
-  return { type, adds, total };
+    adds.map(a => `<li><b>${a.dataset.name}</b><span>+ ${kr(+a.value)}</span></li>`).join('') +
+    (rate ? `<li><b>Ratebetaling, ${RATE_MONTHS} mdr.</b><span>+ 15 %</span></li>` : '') +
+    (svc ? `<li><b>Serviceaftale · ingen binding</b><span>+ ${kr(SVC_MD)}/md.</span></li>` : '');
+  return { type, adds, total, rate, svc, mdRate };
 }
-$('#calcType').addEventListener('change', calc);
-$('#calcAdd').addEventListener('change', calc);
+['calcType','calcAdd','calcPay','calcSvc'].forEach(id => $('#'+id).addEventListener('change', calc));
 calc();
 
 $('#calcCta').addEventListener('click', () => {
-  const { type, adds, total } = calc();
+  const { type, adds, total, rate, svc, mdRate } = calc();
   const msg = `Jeg er interesseret i: ${TYPE_NAMES[type]}` +
     (adds.length ? ` + ${adds.map(a=>a.dataset.name.toLowerCase()).join(', ')}` : '') +
-    ` (beregnet ca. ${kr(total)}). `;
+    (rate ? ` som ratebetaling (0 kr. i opstart, ca. ${RATE_MONTHS} × ${kr(mdRate)}/md.)` : ` (beregnet ca. ${kr(total)})`) +
+    (svc ? ` + serviceaftale ${SVC_MD} kr. pr. måned` : '') + '. ';
   const ta = $('#cform textarea');
   if (!ta.value.trim()) ta.value = msg;
   $('#kontakt').scrollIntoView({behavior: REDUCED ? 'auto' : 'smooth'});

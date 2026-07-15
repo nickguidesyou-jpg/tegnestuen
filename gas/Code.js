@@ -78,7 +78,11 @@ var CHAT_SYSTEM =
   '- Hjemmeside: fra 4.995 kr. (engangsbeløb). Hjemmeside + booking: fra 7.995 kr. ' +
   'Webshop: fra 12.995 kr. Internt system (lager/ordrer/kunder): fra 14.995 kr.\n' +
   '- Tilvalg: tekstforfatning +1.495, logo/identitet +2.495, AI-funktioner +3.495, eget domæne +495.\n' +
-  '- 0 kr./md. i hosting. Kunden ejer selv koden. Ingen abonnementer.\n' +
+  '- Betaling: engangsbeløb ELLER "0 kr. i opstart" — beløbet delt over 12 måneder (+15 % i alt); ' +
+  'kunden ejer det hele, når sidste rate er betalt.\n' +
+  '- Serviceaftale (frivillig, ingen binding): 249 kr./md. — ændringer inden for 24 timer, ' +
+  'overvågning, backup og prioritet. Kan opsiges måned til måned.\n' +
+  '- 0 kr./md. i hosting. Kunden ejer selv koden. Ingen tvungne abonnementer.\n' +
   '- Proces: gratis skitsemøde (dag 0) → klikbart udkast på rigtig webadresse inden for 48 timer → ' +
   'live inden for ca. en uge (interne systemer 2-4 uger). 30 dages gratis justering efter lancering.\n' +
   '- Kontakt: formularen på siden eller nickguidesyou@gmail.com. Svar inden for 24 timer.\n\n' +
