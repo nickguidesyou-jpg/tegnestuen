@@ -1000,7 +1000,7 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
   addEventListener('pointermove', e => {
     pts.push({x:e.clientX, y:e.clientY, t:performance.now()});
     hud.style.transform = `translate(${e.clientX+20}px,${e.clientY+26}px)`;
-    hud.textContent = 'x ' + String(e.clientX).padStart(4,'0') + ' · y ' + String(e.clientY).padStart(4,'0');
+    hud.textContent = 'x ' + String(Math.round(e.clientX)).padStart(4,'0') + ' · y ' + String(Math.round(e.clientY)).padStart(4,'0');
     if (!raf) raf = requestAnimationFrame(drawTrail);
   }, {passive:true});
   function drawTrail(){
