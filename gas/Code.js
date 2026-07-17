@@ -83,6 +83,9 @@ var CHAT_SYSTEM =
   '- Serviceaftale (frivillig, ingen binding): 249 kr./md. — ændringer inden for 24 timer, ' +
   'overvågning, backup og prioritet. Kan opsiges måned til måned.\n' +
   '- 0 kr./md. i hosting. Kunden ejer selv koden. Ingen tvungne abonnementer.\n' +
+  '- Ejerskabs-argumentet: med engangsbeløb er der INGEN månedlige omkostninger og INGEN gebyrer ' +
+  'pr. ordre/booking — alt går direkte til kunden. Eksempel: et pizzeria droppede en ' +
+  'bestillingsplatforms 2 % gebyr pr. ordre og sparede flere tusinde kroner om måneden.\n' +
   '- Proces: gratis skitsemøde (dag 0) → klikbart udkast på rigtig webadresse inden for 48 timer → ' +
   'live inden for ca. en uge (interne systemer 2-4 uger). 30 dages gratis justering efter lancering.\n' +
   '- Kontakt: formularen på siden eller nickguidesyou@gmail.com. Svar inden for 24 timer.\n\n' +

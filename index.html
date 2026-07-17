@@ -294,6 +294,15 @@ section{position:relative}
   body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 22l1.5-5L18 4.5a2.1 2.1 0 0 1 3 0l.5.5a2.1 2.1 0 0 1 0 3L9 20.5 4 22z' fill='%23ff5a1f' stroke='%230b0e14' stroke-width='1.4'/%3E%3Cpath d='M5.5 17l3.5 3.5' stroke='%230b0e14' stroke-width='1.2'/%3E%3C/svg%3E") 3 23, auto}
 }
 
+/* ejerskabs-strip i pris-sektionen */
+.own{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+@media (max-width:760px){.own{grid-template-columns:1fr}}
+.own>div{border:1px solid var(--line);border-radius:12px;padding:16px 19px;background:var(--ink-2)}
+.own b{display:block;font-family:var(--disp);font-size:1.05rem;color:var(--acc);margin-bottom:4px}
+.own span{font-size:.92rem;color:var(--tx-dim)}
+.own-note{border-left:3px solid var(--acc);padding:10px 18px;margin:0 0 40px;color:var(--tx);font-size:1.02rem;max-width:640px}
+.own-note b{color:var(--acc)}
+
 /* håndtegnet scroll-fremdrift */
 #progress{position:fixed;left:6px;top:0;height:100vh;width:10px;z-index:55;pointer-events:none}
 #progress path{stroke:var(--acc);stroke-width:2.5;fill:none;stroke-linecap:round;opacity:.75}
@@ -652,9 +661,10 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
       <div class="case-txt">
         <span class="case-tag">Pizzeria · Hjemmeside</span>
         <h3>Et menukort der føles som en biografplakat</h3>
-        <p>Et lokalt pizzeria konkurrerede mod nabobyens skabelonsider. Vi tegnede en cinematisk side med hele menukortet — over 100 retter, søgbart på ét sekund — plus en menu-roulette, der vælger for de ubeslutsomme. Prøv søgningen i demoen.</p>
+        <p>Et lokalt pizzeria konkurrerede mod nabobyens skabelonsider. Vi tegnede en cinematisk side med hele menukortet — over 100 retter, søgbart på ét sekund — plus en menu-roulette, der vælger for de ubeslutsomme. Og fordi kunderne nu bestiller direkte, slap pizzeriaet for bestillingsplatformens 2 % gebyr pr. ordre: flere tusinde kroner sparet. Hver måned.</p>
         <div class="chips">
           <span class="chip"><b>100+</b> retter, søgbare</span>
+          <span class="chip"><b>2 %</b> ordregebyr droppet</span>
           <span class="chip">Live på <b>2 dage</b></span>
           <span class="chip"><b>0 kr.</b> i drift/md.</span>
         </div>
@@ -800,6 +810,12 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
       <h2>Regn selv din pris ud. Lige nu.</h2>
       <p class="sec-sub">Ingen "ring for pris". Vælg hvad du har brug for, og se et ærligt, vejledende interval — den faste pris får du efter skitsemødet. Stram likviditet? Start for 0 kr. og betal i rater.</p>
     </div>
+    <div class="own rv">
+      <div><b>0 kr./md. — for altid</b><span>Ingen abonnement, ingen hosting-regning. Når siden er betalt, koster den ikke en krone at have.</span></div>
+      <div><b>0 % i gebyrer</b><span>Bestillinger og bookinger går direkte til dig — ingen platform tager en bid af hver ordre.</span></div>
+      <div><b>100 % dit</b><span>Du ejer kode, design og indhold. Vil du videre en dag, tager du det hele med — frit.</span></div>
+    </div>
+    <p class="own-note rv">Et pizzeria droppede bestillingsplatformens <b>2 % gebyr pr. ordre</b> — det alene var flere tusinde kroner. Hver måned.</p>
     <div class="calc rv">
       <div class="calc-panel">
         <fieldset>
@@ -823,7 +839,7 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 40px;background:var(
         <fieldset>
           <legend>Betaling &amp; efter lancering</legend>
           <div class="opts" id="calcPay">
-            <div class="opt"><input type="radio" name="cpay" id="p1" value="once" checked><label for="p1"><b>Engangsbeløb</b><span>Betal én gang — billigst i længden</span><span class="pr">0 kr./md.</span></label></div>
+            <div class="opt"><input type="radio" name="cpay" id="p1" value="once" checked><label for="p1"><b>Engangsbeløb</b><span>Betal én gang, ej det hele 100 % — billigst i længden</span><span class="pr">0 kr./md. for altid</span></label></div>
             <div class="opt"><input type="radio" name="cpay" id="p2" value="rate"><label for="p2"><b>0 kr. i opstart</b><span>Del beløbet over 12 måneder (+15 %)</span><span class="pr">fast lav rate/md.</span></label></div>
           </div>
           <div class="opts" id="calcSvc" style="margin-top:12px">
